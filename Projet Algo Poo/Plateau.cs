@@ -130,12 +130,11 @@ namespace Projet_Algo
                 Console.WriteLine("Le mot écrit n'est pas présent dans le plateau (Le mot doit commencer à partir du bas du plateau)");
                 return this.Matrice;
             }
-            while ()
-            {
+            //while ()
+            //{
 
-            }
-            (p,indices,comptelettre) = PresenceGauche(lettres, indices, comptelettre);
-            
+            //}
+            return this.Matrice;
             
 
         }
