@@ -9,7 +9,7 @@ namespace Projet_Algo_Poo
     {
         static void Main(string[] args)
         {
-            Dictionnaire dico = new Dictionnaire("C:\\Users\\kemli\\OneDrive - De Vinci\\C#\\algo_poo\\Projet Algo Poo\\Mots_Français.txt");
+            Dictionnaire dico = new Dictionnaire("Mots_Français.txt");
 
 
             Console.Write("Comment Construire le plateau ? ");
@@ -28,7 +28,7 @@ namespace Projet_Algo_Poo
             }
             if (MéthodeConstru == 1)
             {
-                string chemin = "C:\\Users\\reymo\\OneDrive\\Bureau\\ESILV NANTES\\A2\\Algo\\Projet_Algo\\fichiers\\Lettre.txt";
+                string chemin = "../../../Lettre.txt";
                 int cote = File.ReadAllLines(chemin).Length;
                 string[][] matrice = new string[cote][];
                 Plateau grille = new Plateau(matrice, cote);
@@ -38,7 +38,7 @@ namespace Projet_Algo_Poo
 
             else if (MéthodeConstru == 2)
             {
-                string chemin = "C:\\Users\\reymo\\OneDrive\\Bureau\\ESILV NANTES\\A2\\Algo\\Projet_Algo\\fichiers\\Test1.csv";
+                string chemin = "../../../Test1.csv";
                 int cote = File.ReadAllLines(chemin).Length;
                 string[][] matrice = new string[cote][];
                 string chainematrice = matrice.ToString();

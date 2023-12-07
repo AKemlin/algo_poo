@@ -57,7 +57,7 @@ namespace Projet_Algo_Poo
             // Afficher le contenu du dictionnaire
             foreach (var paire in NombreDeMots)
             {
-                Console.Write($"Lettre: {paire.Key}, Nombre de mots: {paire.Value}");
+                Console.Write($"Il y a donc pour la lettre {paire.Key} un total de {paire.Value} mots!");
                 Console.Write("\n");
             }
         }
