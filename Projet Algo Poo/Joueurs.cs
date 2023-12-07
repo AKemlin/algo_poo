@@ -15,6 +15,7 @@ namespace Projet_Algo_Poo
         string[] MotsT = new string[1];
         int Score;
         DateTime Timer;
+
         public Joueurs(string Prenom, string Nom, string[] MotsT, int Score, DateTime Timer)
         {
             this.Prenom = Prenom;
