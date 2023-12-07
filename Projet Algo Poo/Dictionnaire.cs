@@ -10,7 +10,7 @@ namespace Projet_Algo_Poo
     {
         public Dictionnaire(string cheminFichier)
         {
-            string CheminFichier = "C:\\Users\\kemli\\OneDrive - De Vinci\\C#\\algo_poo\\Projet Algo Poo\\Mots_Français.txt";
+            string CheminFichier = "..//..//..//Mots_Français.txt";
             string[] lignes;
             using (StreamReader sr = new StreamReader(CheminFichier))
             {

@@ -11,7 +11,6 @@ namespace Projet_Algo_Poo
         {
             Dictionnaire dico = new Dictionnaire("Mots_Français.txt");
 
-
             Console.Write("Comment Construire le plateau ? ");
             Console.WriteLine(" (Entrer le numéro correspondant)");
             Console.WriteLine("1 : Aléatoirement");
