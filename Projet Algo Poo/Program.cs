@@ -17,7 +17,7 @@ namespace Projet_Algo_Poo
             Console.WriteLine("1 : Aléatoirement");
             Console.WriteLine("2 : Grâce au fichier .csv");
             int MéthodeConstru = int.Parse(Console.ReadLine());
-            string cheminSave = "C:\\Users\\kemli\\OneDrive - De Vinci\\C#\\algo_poo\\Projet Algo Poo\\Sauvegarde.csv";
+            string cheminSave = "../../../Sauvegarde.csv";
             if (MéthodeConstru != 1 && MéthodeConstru != 2)
             {
                 while (MéthodeConstru != 1 && MéthodeConstru != 2)
