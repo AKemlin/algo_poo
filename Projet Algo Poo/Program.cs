@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿
+
+using System.Runtime.CompilerServices;
 using System.IO;
 using Projet_Algo_Poo;
 
@@ -54,3 +56,4 @@ namespace Projet_Algo_Poo
         }
     }
 }
+
