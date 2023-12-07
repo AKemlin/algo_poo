@@ -1,8 +1,6 @@
-﻿int[] tab = new int[3];
-tab[0] = 0;
-tab[1] = 0;
-tab[2] = 0;
-for (int i = 0; i < tab.Length; i++)
+﻿Main()
 {
-    tab[i] = 0;
+    Dictionnaire dico = new Dictionnaire("C:\\Users\\kemli\\Documents\\C#\\Projet Algo Poo\\Projet Algo Poo\\Fichier Bonus\\MotFrançais.txt");
+    bool trouve = dico.RechDichoRecursif("EXEMPLE");
+    Console.WriteLine(trouve ? "Mot trouvé" : "Mot non trouvé");
 }
