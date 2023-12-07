@@ -9,5 +9,6 @@ namespace Projet_Algo_Poo
     public class Dictionnaire
     {
         int a = 0;
+        int b = 0;
     }
 }
