@@ -11,28 +11,19 @@ namespace Projet_Algo_Poo
     public class Joueurs
     {   //creation de chaque attribut de la class joueurs
         string Prenom;
-        string Nom;
         string[] MotsT = new string[1];
         int Score;
-        DateTime Timer;
 
-        public Joueurs(string Prenom, string Nom, string[] MotsT, int Score, DateTime Timer)
+        public Joueurs(string Prenom, string[] MotsT=null, int Score=0)
         {
             this.Prenom = Prenom;
-            this.Nom = Nom;
             this.MotsT = MotsT;
             this.Score = 0;
-            this.Timer = Timer;
         }
         public string AppelationP
         {
             get { return this.Prenom; }
             set { this.Prenom = value; }
-        }
-        public string AppelationN
-        {
-            get { return this.Nom; }
-            set { this.Nom = value; }
         }
         public string[] MotsT1
         {
@@ -64,7 +55,7 @@ namespace Projet_Algo_Poo
 
         public string toString()
         {
-            return "Le Prénom est : " + this.Prenom + "\nLe Nom est : " + this.Nom + "\nLe Score est de : " + this.Score + "\nLe tableau des mots trouvés est : " + this.MotsT;
+            return "Le Prénom est : " + this.Prenom + "\nLe Score est de : " + this.Score + "\nLe tableau des mots trouvés est : " + this.MotsT;
         }
         public void Add_Score(int val)
         {

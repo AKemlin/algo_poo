@@ -47,7 +47,10 @@ namespace Projet_Algo_Poo
                 string mot = "maison";
                 grille.Recherche_Mot(mot);
             }
-            
+
+            Console.WriteLine("Nom du joueur 1 ? ");
+            Joueurs joueur1 = new Joueurs( Console.ReadLine());
+
             //Dictionnaire dico = new Dictionnaire("C:\\Users\\kemli\\OneDrive - De Vinci\\C#\\algo_poo\\Projet Algo Poo\\Mots_Français.txt");
             //bool trouve = dico.RechDichoRecursif("EXEMPLE");
             //Console.WriteLine(trouve ? "Mot trouvé" : "Mot non trouvé");
