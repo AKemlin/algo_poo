@@ -15,17 +15,17 @@ namespace Projet_Algo_Poo
             Console.WriteLine(" (Entrer le numéro correspondant)");
             Console.WriteLine("1 : Aléatoirement");
             Console.WriteLine("2 : Grâce au fichier .csv");
-            int MéthodeConstru = int.Parse(Console.ReadLine());
+            string MéthodeConstru = (Console.ReadLine());
             string cheminSave = "../../../Sauvegarde.csv";
-            if (MéthodeConstru != 1 && MéthodeConstru != 2)
+            if (MéthodeConstru != "1" && MéthodeConstru != "2")
             {
-                while (MéthodeConstru != 1 && MéthodeConstru != 2)
+                while (MéthodeConstru != "1" && MéthodeConstru != "2" && MéthodeConstru != null)
                 {
                     Console.WriteLine("Entrer 1 ou 2 !");
-                    MéthodeConstru = int.Parse(Console.ReadLine());
+                    MéthodeConstru = Console.ReadLine();
                 }
             }
-            if (MéthodeConstru == 1)
+            if (MéthodeConstru == "1")
             {
                 string chemin = "../../../Lettre.txt";
                 int cote = File.ReadAllLines(chemin).Length;
@@ -35,7 +35,7 @@ namespace Projet_Algo_Poo
                 Console.WriteLine(grille.ToString());
             }
 
-            else if (MéthodeConstru == 2)
+            else if (MéthodeConstru == "2")
             {
                 string chemin = "../../../Test1.csv";
                 int cote = File.ReadAllLines(chemin).Length;
