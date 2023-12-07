@@ -70,7 +70,7 @@ namespace Projet_Algo
             }
             Random r = new Random();
 
-            Console.WriteLine("ici");
+            Console.WriteLine("compteur "+ compteur);
 
             for (int i = 0; i < this.Cote; i++)
             {
@@ -78,13 +78,26 @@ namespace Projet_Algo
                 for (int j = 0; j < this.Cote; j++)
                 {
                     int element = r.Next(0, 26);
+                    Console.WriteLine("first " + element);
+                    Console.WriteLine("la");
+                    Console.WriteLine(String.Join(" ", compteur));
+
+
                     while (compteur[element] == 0)
                     {
+                        Console.WriteLine(element + ".");
                         element = r.Next(0, 26);
                     }
 
+                    Console.WriteLine(this);
+
+                    this.Matrice[i] = new string[] {"1", "1" };
+                    Console.WriteLine(this.Matrice[i][0]);
+
+
                     this.Matrice[i][j] = informations[element][0].ToLower();
-                    compteur[element]--;
+                    Console.WriteLine(element);
+                    compteur[element] = compteur[element] - 1;
                 }
             }
         }
