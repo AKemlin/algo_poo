@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.IO;
-using Projet_Algo;
+using Projet_Algo_Poo;
 
 namespace Projet_Algo_Poo
 {
@@ -22,7 +22,6 @@ namespace Projet_Algo_Poo
                     MéthodeConstru = int.Parse(Console.ReadLine());
                 }
             }
-
             if (MéthodeConstru == 1)
             {
                 string chemin = "C:\\Users\\reymo\\OneDrive\\Bureau\\ESILV NANTES\\A2\\Algo\\Projet_Algo\\fichiers\\Lettre.txt";
