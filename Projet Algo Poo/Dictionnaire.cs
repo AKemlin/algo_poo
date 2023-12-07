@@ -28,15 +28,37 @@ namespace Projet_Algo_Poo
                 }
                 lignes = LignesListe.ToArray();
             }
-            // Afficher la liste finale
+            /*// Afficher la liste finale
             foreach (string mot in lignes)
             {
                 Console.WriteLine(mot);
-                Console.Write("\n");
-            }
-            foreach(string mot in lignes)
+            }*/
+
+            Dictionary<char, int> NombreDeMots = new Dictionary<char, int>();
+            foreach (string mot in lignes)
             {
-                
+                // S'assurer que le mot n'est pas vide
+                if (!string.IsNullOrEmpty(mot))
+                {
+                    // Prendre la première lettre du mot et la convertir en majuscule
+                    char lettre = char.ToUpper(mot[0]);
+                    // Si la lettre est déjà dans le dictionnaire, incrémenter la valeur
+                    // Sinon, ajouter la lettre avec une valeur initiale de 1
+                    if (NombreDeMots.ContainsKey(lettre))
+                    {
+                        NombreDeMots[lettre]++;
+                    }
+                    else
+                    {
+                        NombreDeMots.Add(lettre, 1);
+                    }
+                }
+            }
+            // Afficher le contenu du dictionnaire
+            foreach (var paire in NombreDeMots)
+            {
+                Console.Write($"Il y a donc pour la lettre {paire.Key} un total de {paire.Value} mots!");
+                Console.Write("\n");
             }
         }
 
