@@ -46,7 +46,7 @@ namespace Projet_Algo_2023
                 grille.Recherche_Mot(mot);
             }
 
-            Dictionnaire dico = new Dictionnaire("C:\\Users\\kemli\\Documents\\C#\\Projet Algo Poo\\Projet Algo Poo\\Fichier Bonus\\MotFrançais.txt");
+            Dictionnaire dico = new Dictionnaire("C:\\Users\\kemli\\OneDrive - De Vinci\\C#\\algo_poo\\Projet Algo Poo\\Mots_Français.txt");
             bool trouve = dico.RechDichoRecursif("EXEMPLE");
             Console.WriteLine(trouve ? "Mot trouvé" : "Mot non trouvé");
         }

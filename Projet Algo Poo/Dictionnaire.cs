@@ -8,37 +8,35 @@ namespace Projet_Algo_Poo
 {
     class Dictionnaire
     {
-        public string[] lignes;
-
         public Dictionnaire(string cheminFichier)
         {
-            static void Main(string[] args)
+            string CheminFichier = "C:\\Users\\kemli\\OneDrive - De Vinci\\C#\\algo_poo\\Projet Algo Poo\\Mots_Français.txt";
+            string[] lignes;
+            using (StreamReader sr = new StreamReader(CheminFichier))
             {
-                string CheminFichier = "votre_fichier.txt"; // Remplacez par le chemin de votre fichier
-                string[] lignes;
-
-                using (StreamReader sr = new StreamReader(CheminFichier))
+                List<string> LignesListe = new List<string>();
+                string ligne;
+                while ((ligne = sr.ReadLine()) != null)
                 {
-                    List<string> LignesListe = new List<string>();
-                    string ligne;
-                    while ((ligne = sr.ReadLine()) != null)
+                    // Trier chaque ligne
+                    string[] mots = ligne.Split(' ');
+                    QuickSort(mots, 0, mots.Length - 1);
+                    foreach (string mot in mots)
                     {
-                        // Trier chaque ligne
-                        string[] mots = ligne.Split(' ');
-                        QuickSort(mots, 0, mots.Length - 1);
-                        foreach (string mot in mots)
-                        {
-                            LignesListe.Add(mot);
-                        }
+                        LignesListe.Add(mot);
                     }
-                    lignes = LignesListe.ToArray();
                 }
-
-                // Afficher la liste finale
-                foreach (string mot in lignes)
-                {
-                    Console.WriteLine(mot);
-                }
+                lignes = LignesListe.ToArray();
+            }
+            // Afficher la liste finale
+            foreach (string mot in lignes)
+            {
+                Console.WriteLine(mot);
+                Console.Write("\n");
+            }
+            foreach(string mot in lignes)
+            {
+                
             }
         }
 
@@ -78,8 +76,8 @@ namespace Projet_Algo_Poo
             if (i < right)
                 QuickSort(elements, i, right);
         }
-
         // Recherche dichotomique
+        public string[] lignes;
         public bool RechercherMot(string mot)
         {
             if (string.IsNullOrEmpty(mot))
