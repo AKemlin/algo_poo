@@ -8,6 +8,9 @@ namespace Projet_Algo_Poo
     {
         static void Main(string[] args)
         {
+            Dictionnaire dico = new Dictionnaire("C:\\Users\\kemli\\OneDrive - De Vinci\\C#\\algo_poo\\Projet Algo Poo\\Mots_Français.txt");
+
+
             Console.Write("Comment Construire le plateau ? ");
             Console.WriteLine(" (Entrer le numéro correspondant)");
             Console.WriteLine("1 : Aléatoirement");
@@ -45,9 +48,9 @@ namespace Projet_Algo_Poo
                 grille.Recherche_Mot(mot);
             }
 
-            Dictionnaire dico = new Dictionnaire("C:\\Users\\kemli\\OneDrive - De Vinci\\C#\\algo_poo\\Projet Algo Poo\\Mots_Français.txt");
-            bool trouve = dico.RechDichoRecursif("EXEMPLE");
-            Console.WriteLine(trouve ? "Mot trouvé" : "Mot non trouvé");
+            //Dictionnaire dico = new Dictionnaire("C:\\Users\\kemli\\OneDrive - De Vinci\\C#\\algo_poo\\Projet Algo Poo\\Mots_Français.txt");
+            //bool trouve = dico.RechDichoRecursif("EXEMPLE");
+            //Console.WriteLine(trouve ? "Mot trouvé" : "Mot non trouvé");
         }
     }
 }

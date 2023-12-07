@@ -9,7 +9,7 @@ using static System.Formats.Asn1.AsnWriter;
 namespace Projet_Algo_Poo
 {
     public class Joueurs
-    {       //creation de chaque attribut de la class joueurs
+    {   //creation de chaque attribut de la class joueurs
         string Prenom;
         string Nom;
         string[] MotsT = new string[1];

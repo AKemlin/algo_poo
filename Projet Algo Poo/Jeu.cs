@@ -8,5 +8,6 @@ namespace Projet_Algo_Poo
 {
     public class Jeu
     {
+
     }
 }
