@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.CompilerServices;
 
-namespace Projet_Algo
+namespace Projet_Algo_Poo
 {
     public class Plateau
     {

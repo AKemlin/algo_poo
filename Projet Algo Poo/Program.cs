@@ -2,7 +2,7 @@
 using System.IO;
 using Projet_Algo;
 
-namespace Projet_Algo_2023
+namespace Projet_Algo_Poo
 {
     class program
     {

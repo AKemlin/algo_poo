@@ -52,12 +52,10 @@ namespace Projet_Algo_Poo
                 {
                     i++;
                 }
-
                 while (elements[j].CompareTo(pivot) > 0)
                 {
                     j--;
                 }
-
                 if (i <= j)
                 {
                     // Échanger
@@ -69,7 +67,6 @@ namespace Projet_Algo_Poo
                     j--;
                 }
             }
-
             // Appels récursifs
             if (left < j)
                 QuickSort(elements, left, j);
@@ -103,7 +100,6 @@ namespace Projet_Algo_Poo
                 else
                     droite = milieu - 1;
             }
-
             return false;
         }
     }
