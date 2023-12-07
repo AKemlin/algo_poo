@@ -1,8 +1,7 @@
-﻿
-
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.IO;
 using Projet_Algo_Poo;
+using Projet_Algo;
 
 namespace Projet_Algo_Poo
 {
@@ -18,7 +17,7 @@ namespace Projet_Algo_Poo
             Console.WriteLine("1 : Aléatoirement");
             Console.WriteLine("2 : Grâce au fichier .csv");
             int MéthodeConstru = int.Parse(Console.ReadLine());
-            string cheminSave = "C:\\Users\\reymo\\OneDrive\\Bureau\\ESILV NANTES\\A2\\Algo\\Projet_Algo\\fichiers\\Sauvegarde.csv";
+            string cheminSave = "C:\\Users\\kemli\\OneDrive - De Vinci\\C#\\algo_poo\\Projet Algo Poo\\Sauvegarde.csv";
             if (MéthodeConstru != 1 && MéthodeConstru != 2)
             {
                 while (MéthodeConstru != 1 && MéthodeConstru != 2)
@@ -49,7 +48,7 @@ namespace Projet_Algo_Poo
                 string mot = "maison";
                 grille.Recherche_Mot(mot);
             }
-
+            
             //Dictionnaire dico = new Dictionnaire("C:\\Users\\kemli\\OneDrive - De Vinci\\C#\\algo_poo\\Projet Algo Poo\\Mots_Français.txt");
             //bool trouve = dico.RechDichoRecursif("EXEMPLE");
             //Console.WriteLine(trouve ? "Mot trouvé" : "Mot non trouvé");
