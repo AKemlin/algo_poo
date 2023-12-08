@@ -36,7 +36,6 @@ namespace Projet_Algo
 
         public void ToRead(string chemin)
         {
-            Console.WriteLine("toread");
             string[] lignes = File.ReadAllLines(chemin);
             for (int i = 0; i < this.Cote; i++)
             {

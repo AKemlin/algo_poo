@@ -42,6 +42,7 @@ namespace Projet_Algo_Poo
 
             else if (MéthodeConstru == "2")
             {
+                Console.WriteLine(); 
                 string chemin = "../../../Test1.csv";
                 int cote = File.ReadAllLines(chemin).Length;
                 string[][] matrice = new string[cote][];

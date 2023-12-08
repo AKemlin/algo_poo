@@ -28,6 +28,7 @@ namespace Projet_Algo_Poo
                 }
                 lignes = LignesListe.ToArray();
             }
+            
             // Afficher la liste finale du dictionnaire trier
             string memoire = " ";
             foreach (string mot in lignes)
@@ -51,6 +52,7 @@ namespace Projet_Algo_Poo
                 memoire = mot;
             }
             Console.WriteLine();
+            
 
             Dictionary<char, int> NombreDeMots = new Dictionary<char, int>();
             foreach (string mot in lignes)
