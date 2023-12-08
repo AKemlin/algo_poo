@@ -54,7 +54,6 @@ namespace Projet_Algo
             {
                 transition[i] = lignes[i].Split(';');
                 informations[i] = transition[i][0].Split(',');
-
             }
 
 
