@@ -48,8 +48,7 @@ namespace Projet_Algo
 
         public void ToReadRandom(string chemin)
         {
-            Console.WriteLine("ici");
-
+           
             string[] lignes = File.ReadAllLines(chemin);
             string[][] transition = new string[lignes.Length][];
             string[][] informations = new string[lignes.Length][];
@@ -57,46 +56,44 @@ namespace Projet_Algo
             {
                 transition[i] = lignes[i].Split(';');
                 informations[i] = transition[i][0].Split(',');
-
             }
 
-
+            string[] remplissagematrice = new string[this.Cote];
+            for (int i = 0; i < this.Cote; i++)
+            {
+                remplissagematrice[i] = "-";
+            }
+            Console.WriteLine(remplissagematrice[0]);
+            Console.WriteLine(remplissagematrice[3]);
+            Console.WriteLine(remplissagematrice[6]);
+            for (int i = 0;i < this.Cote; i++)
+            {
+                this.Matrice[i] = remplissagematrice;
+            }
+            
             int[] compteur = new int[26];
             for (int i = 0; i < 26; i++)
             {
                 compteur[i] = Convert.ToInt32(informations[i][1]);
-
             }
+            
             Random r = new Random();
-
-            Console.WriteLine("compteur "+ compteur);
-
-            for (int i = 0; i < this.Cote; i++)
+            for (int i = 6; i < this.Cote ; i++)
             {
-                Console.WriteLine(i);
+                
                 for (int j = 0; j < this.Cote; j++)
                 {
                     int element = r.Next(0, 26);
-                    Console.WriteLine("first " + element);
-                    Console.WriteLine("la");
-                    Console.WriteLine(String.Join(" ", compteur));
-
-
                     while (compteur[element] == 0)
                     {
-                        Console.WriteLine(element + ".");
                         element = r.Next(0, 26);
                     }
-
-                    Console.WriteLine(this);
-
-                    this.Matrice[i] = new string[] {"1", "1" };
-                    Console.WriteLine(this.Matrice[i][0]);
-
-
+                    Console.Write(i+" , "+ j+ " || ");
+                    Console.Write(element+" || ");
+                    Console.WriteLine(informations[element][0]);
                     this.Matrice[i][j] = informations[element][0].ToLower();
-                    Console.WriteLine(element);
-                    compteur[element] = compteur[element] - 1;
+                    Console.WriteLine(this.Matrice[i][j]);
+                    compteur[element]--;
                 }
             }
         }

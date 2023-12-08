@@ -28,7 +28,8 @@ namespace Projet_Algo_Poo
             if (MéthodeConstru == "1")
             {
                 string chemin = "../../../Lettre.txt";
-                int cote = File.ReadAllLines(chemin).Length;
+                Console.WriteLine("Quelle dimension du plateau ?");
+                int cote = int.Parse(Console.ReadLine());
                 string[][] matrice = new string[cote][];
                 Plateau grille = new Plateau(matrice, cote);
                 grille.ToReadRandom(chemin);
