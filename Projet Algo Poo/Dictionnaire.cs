@@ -117,7 +117,7 @@ namespace Projet_Algo_Poo
         }
         // Recherche dichotomique
         public string[] lignes;
-        public bool RechercherMot(string mot)
+        public bool RechDichoRecursif(string mot)
         {
             if (string.IsNullOrEmpty(mot))
                 return false;
