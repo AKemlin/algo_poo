@@ -10,6 +10,11 @@ namespace Projet_Algo_Poo
         static void Main(string[] args)
         {
             Dictionnaire dico = new Dictionnaire("Mots_Français.txt");
+            Console.WriteLine(" ");
+            Console.WriteLine("Nom du joueur 1 ? ");
+            Joueurs joueur1 = new Joueurs(Console.ReadLine());
+            Console.WriteLine("Nom du joueur 2 ? ");
+            Joueurs joueur2 = new Joueurs(Console.ReadLine());
 
             Console.Write("Comment Construire le plateau ? ");
             Console.WriteLine(" (Entrer le numéro correspondant)");
@@ -48,8 +53,7 @@ namespace Projet_Algo_Poo
                 grille.Recherche_Mot(mot);
             }
 
-            Console.WriteLine("Nom du joueur 1 ? ");
-            Joueurs joueur1 = new Joueurs( Console.ReadLine());
+          
 
             //Dictionnaire dico = new Dictionnaire("C:\\Users\\kemli\\OneDrive - De Vinci\\C#\\algo_poo\\Projet Algo Poo\\Mots_Français.txt");
             //bool trouve = dico.RechDichoRecursif("EXEMPLE");
