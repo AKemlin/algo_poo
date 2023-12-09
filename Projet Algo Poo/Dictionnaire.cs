@@ -130,15 +130,15 @@ namespace Projet_Algo_Poo
 
             while (gauche <= droite)
             {
-                int Milieu1 = gauche + (droite - gauche) / 2;
-                int resultat = mots[Milieu1].CompareTo(mot);
+                int milieu = gauche + (droite - gauche) / 2;
+                int resultat = mots[milieu].CompareTo(mot);
 
                 if (resultat == 0)
                     return true;
-                if (resultat < 0)
-                    gauche = Milieu1 + 1;
+                else if (resultat < 0)
+                    gauche = milieu + 1;
                 else
-                    droite = Milieu1 - 1;
+                    droite = milieu - 1;
             }
             return false;
         }
