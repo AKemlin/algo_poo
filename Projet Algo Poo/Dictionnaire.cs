@@ -87,7 +87,6 @@ namespace Projet_Algo_Poo
         {
             int i = left, j = right;
             string Tampon1 = Milieu[(left + right) / 2];
-
             while (i <= j)
             {
                 while (Milieu[i].CompareTo(Tampon1) < 0)
@@ -104,7 +103,6 @@ namespace Projet_Algo_Poo
                     string Tampon2 = Milieu[i];
                     Milieu[i] = Milieu[j];
                     Milieu[j] = Tampon2;
-
                     i++;
                     j--;
                 }

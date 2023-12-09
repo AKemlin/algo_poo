@@ -22,6 +22,7 @@ namespace Projet_Algo_Poo
             Joueurs joueur1 = new Joueurs(Console.ReadLine());
             Console.WriteLine("Nom du joueur 2 ? ");
             Joueurs joueur2 = new Joueurs(Console.ReadLine());
+            Console.WriteLine("Combien de temps voulez vous que la partie dure ?");
 
             Console.Write("Comment Construire le plateau ? ");
             Console.WriteLine(" (Entrer le numéro correspondant)");
