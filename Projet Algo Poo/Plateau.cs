@@ -54,44 +54,46 @@ namespace Projet_Algo
                 transition[i] = lignes[i].Split(';');
                 informations[i] = transition[i][0].Split(',');
             }
-
             string[] remplissagematrice = new string[this.Cote];
             for (int i = 0; i < this.Cote; i++)
             {
                 remplissagematrice[i] = "-";
             }
-            Console.WriteLine(remplissagematrice[0]);
-            Console.WriteLine(remplissagematrice[3]);
-            Console.WriteLine(remplissagematrice[6]);
+            
             for (int i = 0;i < this.Cote; i++)
             {
                 this.Matrice[i] = remplissagematrice;
+                
             }
             
             int[] compteur = new int[26];
-            for (int i = 0; i < 26; i++)
-            {
-                compteur[i] = Convert.ToInt32(informations[i][1]);
-            }
+            
             
             Random r = new Random();
-            for (int i = 6; i < this.Cote ; i++)
+            for (int i = 0; i < this.Cote ; i++)
             {
                 
                 for (int j = 0; j < this.Cote; j++)
                 {
                     int element = r.Next(0, 26);
-                    while (compteur[element] == 0)
+                    if (compteur[element] < int.Parse(informations[element][1]))
                     {
-                        element = r.Next(0, 26);
+                        this.Matrice[i][j] = informations[element][0].ToLower();
+                        compteur[element]++;
                     }
-                    Console.Write(i+" , "+ j+ " || ");
-                    Console.Write(element+" || ");
-                    Console.WriteLine(informations[element][0]);
-                    this.Matrice[i][j] = informations[element][0].ToLower();
+
+                    else if (compteur[element] == int.Parse(informations[element][1]))
+                    {
+                        while (compteur[element] == int.Parse(informations[element][1]))
+                        {
+                            element = r.Next(0, 26);
+                        }
+                        this.Matrice[i][j] = informations[element][0].ToLower();
+                        compteur[element]++;
+                    }
                     Console.WriteLine(this.Matrice[i][j]);
-                    compteur[element]--;
                 }
+                    
             }
         }
 
