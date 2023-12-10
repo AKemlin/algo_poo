@@ -28,11 +28,31 @@ namespace Projet_Algo_Poo
                 }
                 lignes = LignesListe.ToArray();
             }
-            /*// Afficher la liste finale
+            /*
+            // Afficher la liste finale du dictionnaire trier
+            string memoire = " ";
             foreach (string mot in lignes)
             {
-                Console.WriteLine(mot);
-            }*/
+                if (mot[0] == 'A')
+                {
+                    Console.Write(mot +" ");
+                }
+                else
+                {
+                    if (mot[0] != memoire[0])
+                    {
+                        Console.WriteLine();
+                        Console.Write(mot+" ");
+                    }
+                    else
+                    {
+                        Console.Write(mot + " ");
+                    }
+                }
+                memoire = mot;
+            }
+            Console.WriteLine();
+            */
 
             Dictionary<char, int> NombreDeMots = new Dictionary<char, int>();
             foreach (string mot in lignes)
@@ -63,41 +83,39 @@ namespace Projet_Algo_Poo
         }
 
         // Implémentation du Quick Sort
-        public void QuickSort(string[] elements, int left, int right)
+        public void QuickSort(string[] Milieu, int left, int right)
         {
             int i = left, j = right;
-            string pivot = elements[(left + right) / 2];
-
+            string Tampon1 = Milieu[(left + right) / 2];
             while (i <= j)
             {
-                while (elements[i].CompareTo(pivot) < 0)
+                while (Milieu[i].CompareTo(Tampon1) < 0)
                 {
                     i++;
                 }
-                while (elements[j].CompareTo(pivot) > 0)
+                while (Milieu[j].CompareTo(Tampon1) > 0)
                 {
                     j--;
                 }
                 if (i <= j)
                 {
                     // Échanger
-                    string tmp = elements[i];
-                    elements[i] = elements[j];
-                    elements[j] = tmp;
-
+                    string Tampon2 = Milieu[i];
+                    Milieu[i] = Milieu[j];
+                    Milieu[j] = Tampon2;
                     i++;
                     j--;
                 }
             }
             // Appels récursifs
             if (left < j)
-                QuickSort(elements, left, j);
+                QuickSort(Milieu, left, j);
             if (i < right)
-                QuickSort(elements, i, right);
+                QuickSort(Milieu, i, right);
         }
         // Recherche dichotomique
         public string[] lignes;
-        public bool RechercherMot(string mot)
+        public bool RechDichoRecursif(string mot)
         {
             if (string.IsNullOrEmpty(mot))
                 return false;
@@ -117,7 +135,7 @@ namespace Projet_Algo_Poo
 
                 if (resultat == 0)
                     return true;
-                if (resultat < 0)
+                else if (resultat < 0)
                     gauche = milieu + 1;
                 else
                     droite = milieu - 1;

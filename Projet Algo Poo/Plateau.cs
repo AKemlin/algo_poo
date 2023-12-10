@@ -18,7 +18,6 @@ namespace Projet_Algo
         {
             this.Matrice = Matrice;
             this.Cote = Cote;
-
         }
 
         public void ToFile(string chemin)
@@ -33,12 +32,10 @@ namespace Projet_Algo
                 lignes.Append("");
             }
             File.WriteAllLines(chemin, lignes);
-
         }
 
         public void ToRead(string chemin)
         {
-            Console.WriteLine("toread");
             string[] lignes = File.ReadAllLines(chemin);
             for (int i = 0; i < this.Cote; i++)
             {
