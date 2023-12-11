@@ -36,7 +36,7 @@ namespace Projet_Algo_Poo
             // Ajoute le mot à la liste s'il n'est pas déjà présent
             if (!Contient(mot))
             {
-                MotsT.Append(mot); //C'est l'addition pour les tableaus
+                MotsT.Append(mot); //C'est l'addition pour les tableaux
             }
         }
         public bool Contient(string mot)

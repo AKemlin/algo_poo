@@ -243,5 +243,30 @@ namespace Projet_Algo
             }
             return (false, indices, comptelettre);
         }
+
+
+        public void Maj_Plateau()
+        {
+            for (int i = this.Cote; i >= 0; i++)
+            {
+                for (int j = 0; j < this.Cote; j++)
+                {
+                    if (i == 0)
+                    {
+                        break;
+                    }
+                    else if (this.Matrice[i - 1][j] == "0")
+                    {
+                        break;
+                    }
+                    else if (this.Matrice[i][j] == "0")
+                    {
+                        this.Matrice[i][j] = this.Matrice[i - 1][j];
+                    }
+                }
+            }
+        }
+
+
     }
 }
