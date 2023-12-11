@@ -20,7 +20,7 @@ namespace Projet_Algo
             this.Cote = Cote;
         }
 
-        public void ToFile(string chemin)
+        public void ToFile(string chemin)  // Sauvegarde du plateau sur un fichier externe(Sauvegarde.csv)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace Projet_Algo
             
         }
 
-        public void ToRead(string chemin)
+        public void ToRead(string chemin)  // Création du plateau a partir du fichier Test1.csv
         {
             string[] lignes = File.ReadAllLines(chemin);
             for (int i = 0; i < this.Cote; i++)
@@ -57,7 +57,7 @@ namespace Projet_Algo
             }
         }
 
-        public void ToReadRandom(string chemin)
+        public void ToReadRandom(string chemin)  // Création du plateau aléatoirement en respectant les contraintes du fichier Lettre.txt
         {
            
             string[] lignes = File.ReadAllLines(chemin);
@@ -94,7 +94,7 @@ namespace Projet_Algo
         }
 
 
-        public string ToString()
+        public string ToString()  // Retourne une chaine de caractères qui permet d'afficher le plateau
         {
             string chainematrice = null;
             for (int i = 0; i < this.Cote; i++)
@@ -110,7 +110,7 @@ namespace Projet_Algo
         }
 
 
-        public string[][] Recherche_Mot(string mot)
+        public string[][] Recherche_Mot(string mot)  // recherche si le mot entré est present dans le plateau selon les règles 
         {
             char[] lettres = mot.ToCharArray();
             Stack<int[]> indices = new Stack<int[]>();
@@ -245,7 +245,7 @@ namespace Projet_Algo
         }
 
 
-        public void Maj_Plateau()
+        public void Maj_Plateau()  // Met a jour le plateau pour continuer le jeu.
         {
             for (int i = this.Cote; i >= 0; i++)
             {
@@ -255,11 +255,11 @@ namespace Projet_Algo
                     {
                         break;
                     }
-                    else if (this.Matrice[i - 1][j] == "0")
+                    else if (this.Matrice[i - 1][j] == null)
                     {
                         break;
                     }
-                    else if (this.Matrice[i][j] == "0")
+                    else if (this.Matrice[i][j] == null)
                     {
                         this.Matrice[i][j] = this.Matrice[i - 1][j];
                     }
