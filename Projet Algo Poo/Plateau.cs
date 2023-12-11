@@ -22,16 +22,30 @@ namespace Projet_Algo
 
         public void ToFile(string chemin)
         {
-            string[] lignes = new string[] { };
-            for (int i = 0; i < this.Cote; i++)
+            try
             {
-                for (int j = 0; j < this.Cote; j++)
+                using (StreamWriter Sauvegarde = new StreamWriter(chemin))
                 {
-                    lignes.Append($"{this.Matrice[i][j]}");
+                    for (int i = 0; i < this.Cote; i++)
+                    {
+                        for (int j = 0; j < this.Cote; j++)
+                        {
+                            Sauvegarde.Write(this.Matrice[i][j]);
+                            if (j < this.Cote - 1)
+                            {
+                                Sauvegarde.Write(",");
+                            }
+                        }
+                        Sauvegarde.WriteLine();
+                    }
                 }
-                lignes.Append("");
+                Console.WriteLine("Plateau Sauvegardé");
             }
-            File.WriteAllLines(chemin, lignes);
+            catch (Exception e)
+            {
+                Console.WriteLine("Le plateau n'a pas pu être sauvegardé");
+            }
+            
         }
 
         public void ToRead(string chemin)
@@ -54,21 +68,13 @@ namespace Projet_Algo
                 transition[i] = lignes[i].Split(';');
                 informations[i] = transition[i][0].Split(',');
             }
-            string[] remplissagematrice = new string[this.Cote];
-            for (int i = 0; i < this.Cote; i++)
-            {
-                remplissagematrice[i] = "-";
-            }
-            
             for (int i = 0;i < this.Cote; i++)
             {
-                this.Matrice[i] = remplissagematrice;
+                this.Matrice[i] = new string[this.Cote];
                 
             }
             
             int[] compteur = new int[26];
-            
-            
             Random r = new Random();
             for (int i = 0; i < this.Cote ; i++)
             {
@@ -76,22 +82,12 @@ namespace Projet_Algo
                 for (int j = 0; j < this.Cote; j++)
                 {
                     int element = r.Next(0, 26);
-                    if (compteur[element] < int.Parse(informations[element][1]))
+                    while (compteur[element] == int.Parse(informations[element][1]))
                     {
-                        this.Matrice[i][j] = informations[element][0].ToLower();
-                        compteur[element]++;
+                        element = r.Next(0, 26);
                     }
-
-                    else if (compteur[element] == int.Parse(informations[element][1]))
-                    {
-                        while (compteur[element] == int.Parse(informations[element][1]))
-                        {
-                            element = r.Next(0, 26);
-                        }
-                        this.Matrice[i][j] = informations[element][0].ToLower();
-                        compteur[element]++;
-                    }
-                    Console.WriteLine(this.Matrice[i][j]);
+                    this.Matrice[i][j] = informations[element][0].ToLower();
+                    compteur[element]++;
                 }
                     
             }
@@ -118,8 +114,9 @@ namespace Projet_Algo
         {
             char[] lettres = mot.ToCharArray();
             Stack<int[]> indices = new Stack<int[]>();
-            Stack<int[]> interdits = new Stack<int[]>();
-            int[] indicelettres = new int[lettres.Length];
+            List<int[]> interdits = new List<int[]>();
+            int[] indicelettres = new int[2];
+            
             bool p = false;
             int comptelettre = 1;
             for (int i = 0; i < this.Cote; i++)
@@ -145,6 +142,16 @@ namespace Projet_Algo
             return this.Matrice;
             
 
+        }
+
+        public bool Recherche(char[] lettres, Stack<int[]> indices, List<int[]> interdits,int comptelettre, bool f)
+        {
+            if (f == true )
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public (bool, Stack<int[]>, int) PresenceGauche (char[] lettres, Stack<int[]> indices, Stack<int[]> interdits, int comptelettre)

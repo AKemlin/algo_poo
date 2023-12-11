@@ -47,6 +47,13 @@ namespace Projet_Algo_Poo
                 Plateau grille = new Plateau(matrice, cote);
                 grille.ToReadRandom(chemin);
                 Console.WriteLine(grille.ToString());
+                Console.WriteLine("Voulez-vous sauvegarder le plateau dans un fichier exterieur ? (oui ou non)");
+                string Save = Console.ReadLine().ToLower();
+                if (Save == "oui")
+                {
+                    grille.ToFile(cheminSave);
+                }
+                
             }
 
             else if (MéthodeConstru == "2")
