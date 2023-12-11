@@ -51,7 +51,7 @@ namespace Projet_Algo_Poo
                 }
             }
             return MotTrouver;
-        }
+        } 
 
         public string toString()
         {
@@ -61,28 +61,5 @@ namespace Projet_Algo_Poo
         {
             this.Score += val; //penser a definir val qui seras la valeur de chaque MotsT donc les mots trouvees par le joueur
         }
-        /*
-        #region Timers
-        public class GameTimer
-        {
-            public Timer timer;
-            public GameTimer()
-            {
-                // Création du timer pour 3 heures et 30 minutes
-                timer = new Timer(12600000); // Temps en millisecondes (3h30min = 3*60*60*1000 + 30*60*1000)
-                timer.AutoReset = false; // Pour que le timer ne se répète pas
-            }
-            public void Start()
-            {
-                timer.Start(); // Démarrage du timer
-            }
-            public void tempsMax()
-            {
-                Console.WriteLine("Stop, le joueur a dépassé le temps !");
-                // Ajoutez ici toute autre logique nécessaire après l'expiration du temps
-            }
-        }
-        #endregion Timers
-        */
     }
 }

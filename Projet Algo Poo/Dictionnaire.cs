@@ -81,7 +81,7 @@ namespace Projet_Algo_Poo
                 Console.Write("\n");
             }
         }
-
+         
         // Implémentation du Quick Sort
         public void QuickSort(string[] Milieu, int left, int right)
         {

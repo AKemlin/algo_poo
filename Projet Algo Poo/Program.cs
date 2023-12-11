@@ -52,7 +52,7 @@ namespace Projet_Algo_Poo
                 if (Save == "oui")
                 {
                     grille.ToFile(cheminSave);
-                }
+                } 
                 
             }
 
