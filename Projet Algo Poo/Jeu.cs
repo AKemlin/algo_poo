@@ -27,7 +27,6 @@ namespace Projet_Algo_Poo
             List<string> lignes = new List<string> { };
             Dictionnaire dico = new Dictionnaire(lignes);
             dico.tout();
-
             Console.WriteLine(" ");
             Console.WriteLine("Nom du joueur 1 ? ");
             Joueurs joueur1 = new Joueurs(Console.ReadLine());
