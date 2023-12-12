@@ -11,7 +11,7 @@ namespace Projet_Algo_Poo
     public class Joueurs
     {   //creation de chaque attribut de la class joueurs
         string Prenom;
-        string[] MotsT = new string[1];
+        string[] MotsT = new string[] { };
         int Score;
 
         public Joueurs(string Prenom, string[] MotsT=null, int Score=0)
@@ -51,7 +51,7 @@ namespace Projet_Algo_Poo
                 }
             }
             return MotTrouver;
-        } 
+        }
 
         public string toString()
         {
