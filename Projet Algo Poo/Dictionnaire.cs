@@ -35,7 +35,7 @@ namespace Projet_Algo_Poo
             }
 
             // Afficher la liste finale du dictionnaire trier
-
+            Console.WriteLine();
             Console.WriteLine("Voulez vous afficher le dictionnaire ? (oui/non)");
             string answer = Console.ReadLine();
             while(answer != "oui" && answer != "non")
@@ -70,10 +70,7 @@ namespace Projet_Algo_Poo
             }
 
             Dictionary<char, int> NombreDeMots = new Dictionary<char, int>();
-
-            // iteration sur les lettres 
-
-            foreach(string ligne in this.lignes)
+            foreach (string ligne in this.lignes)
             {
                 foreach (string mot in ligne.Split(" "))
                 {
@@ -95,11 +92,24 @@ namespace Projet_Algo_Poo
                     }
                 }
             }
-            // Afficher le contenu du dictionnaire
-            foreach (var paire in NombreDeMots)
+
+            // iteration sur les lettres 
+            Console.WriteLine();
+            Console.WriteLine("Voulez vous afficher le nombres de mots par lettres ? (oui/non)");
+            string answer1 = Console.ReadLine();
+            while (answer1 != "oui" && answer1 != "non")
             {
-                Console.Write($"Il y a donc pour la lettre {paire.Key} un total de {paire.Value} mots!");
-                Console.Write("\n");
+                Console.WriteLine("Etes vous sûr ? (oui/non)");
+                answer1 = Console.ReadLine();
+            }
+            if (answer1 == "oui")
+            {
+                // Afficher le contenu du dictionnaire
+                foreach (var paire in NombreDeMots)
+                {
+                    Console.Write($"Il y a donc pour la lettre {paire.Key} un total de {paire.Value} mots!");
+                    Console.Write("\n");
+                }
             }
         }
 
