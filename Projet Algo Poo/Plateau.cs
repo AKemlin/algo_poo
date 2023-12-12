@@ -88,9 +88,11 @@ namespace Projet_Algo
                     }
                     this.Matrice[i][j] = informations[element][0].ToLower();
                     compteur[element]++;
+                    
                 }
                     
             }
+            
         }
 
 
@@ -135,21 +137,78 @@ namespace Projet_Algo
                 Console.WriteLine("Le mot écrit n'est pas présent dans le plateau (Le mot doit commencer à partir du bas du plateau)");
                 return this.Matrice;
             }
-            //while ()
-            //{
-
-            //}
+            
             return this.Matrice;
             
 
         }
 
-        public bool Recherche(char[] lettres, Stack<int[]> indices, List<int[]> interdits,int comptelettre, bool f)
+        public bool Recherche(char[] lettres, Stack<int[]> indices, List<int[]> interdits,int comptelettre)
         {
             
-            if (comptelettre == 1 && PresenceGauche(lettres,indices,interdits,comptelettre) == false )
+            if (comptelettre > lettres.Length)
+            {
+                return true;
+            }
+
+            else if (comptelettre == 1 && PresenceGauche(lettres,indices,interdits,comptelettre) == false && PresenceDroite(lettres, indices, interdits, comptelettre) == false && PresenceHaut(lettres, indices, interdits, comptelettre) == false && PresenceHautGauche(lettres, indices, interdits, comptelettre) == false && PresenceHautDroite(lettres, indices, interdits, comptelettre) == false)
             {
                 return false;
+            }
+
+            else if (comptelettre > 1 && PresenceGauche(lettres, indices, interdits, comptelettre) == false && PresenceDroite(lettres, indices, interdits, comptelettre) == false && PresenceHaut(lettres, indices, interdits, comptelettre) == false && PresenceHautGauche(lettres, indices, interdits, comptelettre) == false && PresenceHautDroite(lettres, indices, interdits, comptelettre) == false)
+            {
+                return false;
+            }
+
+            else if (PresenceGauche(lettres, indices, interdits, comptelettre) == true)
+            {
+                int[] ind = indices.Peek();
+                int[] newind = new int[2];
+                newind[0] = ind[0];
+                newind[1] = ind[1] - 1;
+                indices.Push(newind);
+                return Recherche(lettres,indices,interdits,comptelettre++);
+            }
+
+            else if (PresenceDroite(lettres, indices, interdits, comptelettre) == true)
+            {
+                int[] ind = indices.Peek();
+                int[] newind = new int[2];
+                newind[0] = ind[0];
+                newind[1] = ind[1] - 1;
+                indices.Push(newind);
+                return Recherche(lettres, indices, interdits, comptelettre++);
+            }
+
+            else if (PresenceHaut(lettres, indices, interdits, comptelettre) == true)
+            {
+                int[] ind = indices.Peek();
+                int[] newind = new int[2];
+                newind[0] = ind[0];
+                newind[1] = ind[1] - 1;
+                indices.Push(newind);
+                return Recherche(lettres, indices, interdits, comptelettre++);
+            }
+
+            else if (PresenceHautGauche(lettres, indices, interdits, comptelettre) == true)
+            {
+                int[] ind = indices.Peek();
+                int[] newind = new int[2];
+                newind[0] = ind[0];
+                newind[1] = ind[1] - 1;
+                indices.Push(newind);
+                return Recherche(lettres, indices, interdits, comptelettre++);
+            }
+
+            else if (PresenceHautDroite(lettres, indices, interdits, comptelettre) == true)
+            {
+                int[] ind = indices.Peek();
+                int[] newind = new int[2];
+                newind[0] = ind[0];
+                newind[1] = ind[1] - 1;
+                indices.Push(newind);
+                return Recherche(lettres, indices, interdits, comptelettre++);
             }
 
             return true;
@@ -182,20 +241,20 @@ namespace Projet_Algo
             return false;
         }
         
-        public (bool, Stack<int[]>, int) PresenceDroite(char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
+        public bool PresenceDroite(char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
         {
             int[] ind = indices.Peek();
             int[] newind = new int[2];
             if (ind[1] == this.Cote-1)
             {
-                return (false, indices, comptelettre);
+                return false;
             }
 
             for (int i = 0; i < interdits.Count; i++)
             {
                 if (interdits[i] == ind)
                 {
-                    return (false, indices, comptelettre);
+                    return false;
                 }
             }
 
@@ -204,25 +263,25 @@ namespace Projet_Algo
                 newind[0] = ind[0];
                 newind[1] = ind[1] + 1;
                 indices.Push(newind);
-                return (true, indices, comptelettre++);
+                return true;
             }
-            return (false, indices, comptelettre);
+            return false;
         }
 
-        public (bool, Stack<int[]>, int) PresenceHaut(char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
+        public bool PresenceHaut(char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
         {
             int[] ind = indices.Peek();
             int[] newind = new int[2];
             if (ind[0] == 0)
             {
-                return (false, indices, comptelettre);
+                return false;
             }
 
             for (int i = 0; i < interdits.Count; i++)
             {
                 if (interdits[i] == ind)
                 {
-                    return (false, indices, comptelettre);
+                    return false;
                 }
             }
 
@@ -231,25 +290,25 @@ namespace Projet_Algo
                 newind[0] = ind[0] - 1;
                 newind[1] = ind[1];
                 indices.Push(newind);
-                return (true, indices, comptelettre++);
+                return true;
             }
-            return (false, indices, comptelettre);
+            return false;
         }
 
-        public (bool, Stack<int[]>, int) PresenceHautGauche(char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
+        public bool PresenceHautGauche(char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
         {
             int[] ind = indices.Peek();
             int[] newind = new int[2];
             if (ind[0] == 0 || ind[1] == 0)
             {
-                return (false, indices, comptelettre);
+                return false;
             }
 
             for (int i = 0; i < interdits.Count; i++)
             {
                 if (interdits[i] == ind)
                 {
-                    return (false, indices, comptelettre);
+                    return false;
                 }
             }
 
@@ -258,25 +317,25 @@ namespace Projet_Algo
                 newind[0] = ind[0] - 1;
                 newind[1] = ind[1] - 1;
                 indices.Push(newind);
-                return (true, indices, comptelettre++);
+                return true;
             }
-            return (false, indices, comptelettre);
+            return false;
         }
 
-        public (bool, Stack<int[]>, int) PresenceHautDroite(char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
+        public bool PresenceHautDroite(char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
         {
             int[] ind = indices.Peek();
             int[] newind = new int[2];
             if (ind[0] == 0 || ind[1] == this.Cote-1)
             {
-                return (false, indices, comptelettre);
+                return false;
             }
 
             for (int i = 0; i < interdits.Count; i++)
             {
                 if (interdits[i] == ind)
                 {
-                    return (false, indices, comptelettre);
+                    return false;
                 }
             }
 
@@ -285,9 +344,9 @@ namespace Projet_Algo
                 newind[0] = ind[0] - 1;
                 newind[1] = ind[1] + 1;
                 indices.Push(newind);
-                return (true, indices, comptelettre++);
+                return true;
             }
-            return (false, indices, comptelettre);
+            return false;
         }
 
 
