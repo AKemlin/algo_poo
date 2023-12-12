@@ -2,6 +2,7 @@
 using System.IO;
 using Projet_Algo_Poo;
 using Projet_Algo;
+using System.ComponentModel.DataAnnotations;
 
 namespace Projet_Algo_Poo
 {
@@ -66,13 +67,22 @@ namespace Projet_Algo_Poo
                 Plateau grille = new Plateau(matrice, cote);
                 grille.ToRead(chemin);
                 Console.WriteLine(grille.ToString());
-                string mot = "maison";
-                grille.Recherche_Mot(mot);
             }
 
-          
-            //bool trouve = dico.RechDichoRecursif("EXEMPLE");
-            //Console.WriteLine(trouve ? "Mot trouvé" : "Mot non trouvé");
+            
+            Console.WriteLine(joueur1.AppelationP +" veuillez rentrez votre mot : ");
+            string mot = Console.ReadLine();
+            bool dicto= dico.RechDichoRecursif(mot);
+            if(dicto==false)
+            {
+                Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
+                Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
+            }
+            else
+            {
+                Console.WriteLine("ca marche");
+            }
+
         }
     }
 }
