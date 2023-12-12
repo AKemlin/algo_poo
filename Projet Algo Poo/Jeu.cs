@@ -126,7 +126,7 @@ namespace Projet_Algo_Poo
                 mot2 = Console.ReadLine();
                 //dicto = dico.RechDichoRecursif(mot2);
             }
-            */
+            /*
 
             bool vrai1 = joueur1.Contient(mot1);
             if (vrai1 == false)
@@ -139,6 +139,7 @@ namespace Projet_Algo_Poo
             {
                 joueur2.Add_Mot(mot2);
             }
+            */
         }
     }
 }
