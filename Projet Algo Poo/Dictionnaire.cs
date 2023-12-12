@@ -8,7 +8,7 @@ namespace Projet_Algo_Poo
 {
     class Dictionnaire
     {
-        string[] lignes = new string[] {};
+        string[] lignes = new string[] { };
         public Dictionnaire(string cheminFichier)
         {
             string CheminFichier = "..//..//..//Mots_Français.txt";
@@ -81,7 +81,7 @@ namespace Projet_Algo_Poo
                 Console.Write("\n");
             }
         }
-         
+
         // Implémentation du Quick Sort
         public void QuickSort(string[] Milieu, int left, int right)
         {
@@ -119,16 +119,31 @@ namespace Projet_Algo_Poo
             if (string.IsNullOrEmpty(mot))
             {
                 return false;
+            }
+            int indexLigne = mot[0] - 'A'; // A = 0, B = 1, etc.
+            if (indexLigne < 0 || indexLigne >= lignes.Length)
+            {
+                return false;
+            }
+            string[] mots = lignes[indexLigne].Split(' ');
+            return RechercheDichotomique(mots, mot, 0, mots.Length - 1);
+        }
+
+        public bool RechDichoRecursif(string mot)
+        {
+            if (string.IsNullOrEmpty(mot))
+            {
+                return false;
+            }
 
             int indexLigne = mot[0] - 'A'; // A = 0, B = 1, etc.
             if (indexLigne < 0 || indexLigne >= lignes.Length)
             {
                 return false;
-
+            }
             string[] mots = lignes[indexLigne].Split(' ');
             return RechercheDichotomique(mots, mot, 0, mots.Length - 1);
         }
-
         private bool RechercheDichotomique(string[] mots, string mot, int gauche, int droite)
         {
             if (gauche > droite)
@@ -152,40 +167,7 @@ namespace Projet_Algo_Poo
                 return RechercheDichotomique(mots, mot, gauche, milieu - 1);
             }
         }
-        /*
-        public bool RechDichoRecursif(string mot)
-        {
-            if (string.IsNullOrEmpty(mot))
-            {
-                return false;
-            }
-            int indexLigne = mot[0] - 'A';
-            if (indexLigne < 0 || indexLigne >= lignes.Length)
-            {
-                return false;
-            }
-            string[] mots = lignes[indexLigne].Split(' ');
-            int gauche = 0;
-            int droite = mots.Length - 1;
-            while (gauche <= droite)
-            {
-                int milieu = gauche + (droite - gauche) / 2;
-                int resultat = mots[milieu].CompareTo(mot);
-                if (resultat == 0)
-                {
-                    return true;
-                }
-                else if (resultat < 0)
-                {
-                    gauche = milieu + 1;
-                }
-                else
-                {
-                    droite = milieu - 1;
-                }
-            }
-            return false;
-        }
-        */
     }
 }
+
+
