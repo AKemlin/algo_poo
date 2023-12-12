@@ -8,10 +8,12 @@ namespace Projet_Algo_Poo
 {
     class Dictionnaire
     {
+        public string[] ligne = new string[] {};
         public Dictionnaire(string cheminFichier)
         {
             string CheminFichier = "..//..//..//Mots_Français.txt";
             string[] lignes;
+
             using (StreamReader sr = new StreamReader(CheminFichier))
             {
                 List<string> LignesListe = new List<string>();
@@ -118,11 +120,16 @@ namespace Projet_Algo_Poo
         public bool RechDichoRecursif(string mot)
         {
             if (string.IsNullOrEmpty(mot))
+            {
                 return false;
-
+            }
+               
             int indexLigne = mot[0] - 'A'; // A = 0, B = 1, etc.
             if (indexLigne < 0 || indexLigne >= lignes.Length)
+            {
                 return false;
+            }
+                
 
             string[] mots = lignes[indexLigne].Split(' ');
             int gauche = 0;
