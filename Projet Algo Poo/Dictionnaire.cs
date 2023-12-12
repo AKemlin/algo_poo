@@ -8,12 +8,10 @@ namespace Projet_Algo_Poo
 {
     class Dictionnaire
     {
-        public string[] ligne = new string[] {};
+        string[] lignes = new string[] {};
         public Dictionnaire(string cheminFichier)
         {
             string CheminFichier = "..//..//..//Mots_Français.txt";
-            string[] lignes;
-
             using (StreamReader sr = new StreamReader(CheminFichier))
             {
                 List<string> LignesListe = new List<string>();
@@ -116,36 +114,37 @@ namespace Projet_Algo_Poo
                 QuickSort(Milieu, i, right);
         }
         // Recherche dichotomique
-        public string[] lignes;
+        
         public bool RechDichoRecursif(string mot)
         {
             if (string.IsNullOrEmpty(mot))
             {
                 return false;
-            }
-               
+
             int indexLigne = mot[0] - 'A'; // A = 0, B = 1, etc.
             if (indexLigne < 0 || indexLigne >= lignes.Length)
             {
                 return false;
-            }
-                
 
             string[] mots = lignes[indexLigne].Split(' ');
             int gauche = 0;
             int droite = mots.Length - 1;
-
             while (gauche <= droite)
             {
                 int milieu = gauche + (droite - gauche) / 2;
                 int resultat = mots[milieu].CompareTo(mot);
-
                 if (resultat == 0)
+                {
                     return true;
+                }
                 else if (resultat < 0)
+                {
                     gauche = milieu + 1;
+                }
                 else
+                {
                     droite = milieu - 1;
+                }
             }
             return false;
         }
