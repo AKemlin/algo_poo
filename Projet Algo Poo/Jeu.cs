@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,6 +76,21 @@ namespace Projet_Algo_Poo
                 {
                     grille.ToFile(cheminSave);
                 }
+
+                Console.WriteLine("entrer un mot");
+                string mottest = Console.ReadLine();
+                (bool presence, grille.Matrice) = grille.Recherche_Mot(mottest);
+                if (presence == true)
+                {
+                    Console.WriteLine("Le mot est dans le plateau");
+                    Console.WriteLine(grille.ToString());
+                    grille.Maj_Plateau();
+                    Console.WriteLine(grille.ToString());
+                }
+                else if (presence == false)
+                {
+                    Console.WriteLine("Le mot n'est pas dans le plateau");
+                }
             }
 
             else if (MéthodeConstru == "2")
@@ -93,14 +109,34 @@ namespace Projet_Algo_Poo
                 if (presence == true)
                 {
                     Console.WriteLine("Le mot est dans le plateau");
-                    Console.WriteLine(grille.ToString());
                     grille.Maj_Plateau();
                     Console.WriteLine(grille.ToString());
+
+                    // lire fichier lettre.txt et ajouter le score du mot au joueur
+                    string cheminscore = "../../../Lettre.txt";
+                    string[] Lignes = File.ReadAllLines(cheminscore);
+                    string[][] transition = new string[Lignes.Length][];
+                    string[][] informations = new string[Lignes.Length][];
+                    for (int i = 0; i < Lignes.Length-1; i++)
+                    {
+                        transition[i] = lignes[i].Split(';');
+                        informations[i] = transition[i][0].Split(',');
+                    }
+                    char [] lettres = mottest.ToCharArray();
+                    int score = 0;
+                    for (int i = 0; i < lettres.Length; i++)
+                    {
+                        int ligneinfo = lettres[i] - 'A';
+                        score += Convert.ToInt32(informations[ligneinfo][2]);
+                    }
+                    Console.WriteLine(score);
                 }
                 else if (presence == false)
                 {
                     Console.WriteLine("Le mot n'est pas dans le plateau");
                 }
+
+                
 
             }
         
