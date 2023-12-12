@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -63,7 +64,6 @@ namespace Projet_Algo_Poo
                 {
                     grille.ToFile(cheminSave);
                 }
-
             }
 
             else if (MéthodeConstru == "2")
@@ -91,10 +91,8 @@ namespace Projet_Algo_Poo
                 
             }
 
-            /*
             Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
             string mot1 = Console.ReadLine();
-
             bool dicto = dico.RechDichoRecursif(mot1);
             while (dicto == false)
             {
@@ -106,6 +104,7 @@ namespace Projet_Algo_Poo
 
             Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
             string mot2 = Console.ReadLine();
+            dicto = dico.RechDichoRecursif(mot2);
             while (dicto == false)
             {
                 Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
@@ -113,7 +112,8 @@ namespace Projet_Algo_Poo
                 mot2 = Console.ReadLine();
                 dicto = dico.RechDichoRecursif(mot2);
             }
-
+            joueur1.Add_Mot(mot1);
+            joueur2.Add_Mot(mot2);
         }
     }
 }
