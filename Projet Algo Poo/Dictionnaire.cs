@@ -119,12 +119,12 @@ namespace Projet_Algo_Poo
             if (string.IsNullOrEmpty(mot))
             {
                 return false;
-            }
+
             int indexLigne = mot[0] - 'A'; // A = 0, B = 1, etc.
             if (indexLigne < 0 || indexLigne >= lignes.Length)
             {
                 return false;
-            }
+
             string[] mots = lignes[indexLigne].Split(' ');
             return RechercheDichotomique(mots, mot, 0, mots.Length - 1);
         }
