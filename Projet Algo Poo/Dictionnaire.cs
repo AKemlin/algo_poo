@@ -33,31 +33,41 @@ namespace Projet_Algo_Poo
                 }
                 this.lignes = LignesListe;
             }
-            /*
+
             // Afficher la liste finale du dictionnaire trier
-            string memoire = " ";
-            foreach (string mot in this.lignes)
+
+            Console.WriteLine("Voulez vous afficher le dictionnaire ? (oui/non)");
+            string answer = Console.ReadLine();
+            while(answer != "oui" && answer != "non")
             {
-                if (mot[0] == 'A')
+                Console.WriteLine("Etes vous sûr ? (oui/non)");
+                answer = Console.ReadLine();
+            }
+            if(answer == "oui")
+            {
+                string memoire = " ";
+                foreach (string mot in this.lignes)
                 {
-                    Console.Write(mot +" ");
-                }
-                else
-                {
-                    if (mot[0] != memoire[0])
-                    {
-                        Console.WriteLine();
-                        Console.Write(mot+" ");
-                    }
-                    else
+                    if (mot[0] == 'A')
                     {
                         Console.Write(mot + " ");
                     }
+                    else
+                    {
+                        if (mot[0] != memoire[0])
+                        {
+                            Console.WriteLine();
+                            Console.Write(mot + " ");
+                        }
+                        else
+                        {
+                            Console.Write(mot + " ");
+                        }
+                    }
+                    memoire = mot;
                 }
-                memoire = mot;
+                Console.WriteLine();
             }
-            Console.WriteLine();
-            */
 
             Dictionary<char, int> NombreDeMots = new Dictionary<char, int>();
 
