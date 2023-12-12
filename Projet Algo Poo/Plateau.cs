@@ -134,15 +134,14 @@ namespace Projet_Algo
             if (p == true)
             {
                 (bool present, Stack<int[]> indicesfinal) = Recherche(lettres, indices, interdits, comptelettre);
-                Console.WriteLine();
-                Console.WriteLine(indicesfinal.Count);
+                
                 if (present == true)
                 {
-                    for (int i = 0; i < indicesfinal.Count; i++)
+                    int taille = indicesfinal.Count;
+                    for (int i = 0; i < taille; i++)
                     {
                         int[] indicesup = indicesfinal.Pop();
-                        Console.WriteLine(indicesup[0]);
-                        Console.WriteLine(indicesup[1]);
+                        
                         this.Matrice[indicesup[0]][indicesup[1]] = " ";
                         
                         
@@ -158,7 +157,7 @@ namespace Projet_Algo
 
         public (bool, Stack<int[]>) Recherche(char[] lettres, Stack<int[]> indices, List<int[]> interdits,int comptelettre)
         {
-            Console.WriteLine(comptelettre);
+            
             if (comptelettre >= lettres.Length)
             {
                 return (true,indices);
@@ -363,27 +362,30 @@ namespace Projet_Algo
 
         public void Maj_Plateau()  // Met a jour le plateau pour continuer le jeu.
         {
-            for (int i = this.Cote; i >= 0; i++)
+            bool stop = false;
+            for (int k = 0 ; k < 100; k++)
             {
-                for (int j = 0; j < this.Cote; j++)
+                for (int i = this.Cote - 1; i >= 0; i--)
                 {
-                    if (i == 0)
+                    for (int j = 0; j < this.Cote - 1; j++)
                     {
-                        break;
-                    }
-                    else if (this.Matrice[i - 1][j] == " ")
-                    {
-                        break;
-                    }
-                    else if (this.Matrice[i][j] == " ")
-                    {
-                        this.Matrice[i][j] = this.Matrice[i - 1][j];
-                        this.Matrice[i - 1][j] = " ";
+                        if (i == 0)
+                        {
+                            break;
+                        }
+                        else if (this.Matrice[i - 1][j] == " ")
+                        {
+                            break;
+                        }
+                        else if (this.Matrice[i][j] == " ")
+                        {
+                            this.Matrice[i][j] = this.Matrice[i - 1][j];
+                            this.Matrice[i - 1][j] = " ";
+                        }
                     }
                 }
             }
+            
         }
-
-
     }
 }

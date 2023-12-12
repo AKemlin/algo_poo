@@ -83,6 +83,8 @@ namespace Projet_Algo_Poo
                 {
                     Console.WriteLine("Le mot est dans le plateau");
                     Console.WriteLine(grille.ToString());
+                    grille.Maj_Plateau();
+                    Console.WriteLine(grille.ToString());
                 }
                 else if (presence == false)
                 {
