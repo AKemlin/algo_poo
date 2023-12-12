@@ -146,7 +146,8 @@ namespace Projet_Algo
 
         public bool Recherche(char[] lettres, Stack<int[]> indices, List<int[]> interdits,int comptelettre, bool f)
         {
-            if (f == true )
+            
+            if (comptelettre == 1 && PresenceGauche(lettres,indices,interdits,comptelettre) == false )
             {
                 return false;
             }
@@ -154,25 +155,34 @@ namespace Projet_Algo
             return true;
         }
 
-        public (bool, Stack<int[]>, int) PresenceGauche (char[] lettres, Stack<int[]> indices, Stack<int[]> interdits, int comptelettre)
+        public bool PresenceGauche (char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
         {
             int[] ind = indices.Peek();
             int[] newind = new int[2];
             if (ind[1] == 0)
             {
-                return (false,indices,comptelettre);
+                return false;
             }
-            else if (Convert.ToChar(this.Matrice[ind[0]][ind[1]-1]) == lettres[comptelettre])
+            
+            for (int i = 0; i < interdits.Count; i++)
+            {
+                if (interdits[i] == ind)
+                {
+                    return false;
+                }
+            }
+            
+            if (Convert.ToChar(this.Matrice[ind[0]][ind[1]-1]) == lettres[comptelettre])
             {
                 newind[0] = ind[0];
                 newind[1] = ind[1]-1;
                 indices.Push(newind);
-                return (true, indices, comptelettre++);
+                return true;
             }
-            return (false,indices,comptelettre);
+            return false;
         }
         
-        public (bool, Stack<int[]>, int) PresenceDroite(char[] lettres, Stack<int[]> indices, int comptelettre)
+        public (bool, Stack<int[]>, int) PresenceDroite(char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
         {
             int[] ind = indices.Peek();
             int[] newind = new int[2];
@@ -180,7 +190,16 @@ namespace Projet_Algo
             {
                 return (false, indices, comptelettre);
             }
-            else if (Convert.ToChar(this.Matrice[ind[0]][ind[1] + 1]) == lettres[comptelettre])
+
+            for (int i = 0; i < interdits.Count; i++)
+            {
+                if (interdits[i] == ind)
+                {
+                    return (false, indices, comptelettre);
+                }
+            }
+
+            if (Convert.ToChar(this.Matrice[ind[0]][ind[1] + 1]) == lettres[comptelettre])
             {
                 newind[0] = ind[0];
                 newind[1] = ind[1] + 1;
@@ -190,7 +209,7 @@ namespace Projet_Algo
             return (false, indices, comptelettre);
         }
 
-        public (bool, Stack<int[]>, int) PresenceHaut(char[] lettres, Stack<int[]> indices, int comptelettre)
+        public (bool, Stack<int[]>, int) PresenceHaut(char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
         {
             int[] ind = indices.Peek();
             int[] newind = new int[2];
@@ -198,7 +217,16 @@ namespace Projet_Algo
             {
                 return (false, indices, comptelettre);
             }
-            else if (Convert.ToChar(this.Matrice[ind[0] - 1][ind[1]]) == lettres[comptelettre])
+
+            for (int i = 0; i < interdits.Count; i++)
+            {
+                if (interdits[i] == ind)
+                {
+                    return (false, indices, comptelettre);
+                }
+            }
+
+            if (Convert.ToChar(this.Matrice[ind[0] - 1][ind[1]]) == lettres[comptelettre])
             {
                 newind[0] = ind[0] - 1;
                 newind[1] = ind[1];
@@ -208,7 +236,7 @@ namespace Projet_Algo
             return (false, indices, comptelettre);
         }
 
-        public (bool, Stack<int[]>, int) PresenceHautGauche(char[] lettres, Stack<int[]> indices, int comptelettre)
+        public (bool, Stack<int[]>, int) PresenceHautGauche(char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
         {
             int[] ind = indices.Peek();
             int[] newind = new int[2];
@@ -216,7 +244,16 @@ namespace Projet_Algo
             {
                 return (false, indices, comptelettre);
             }
-            else if (Convert.ToChar(this.Matrice[ind[0] - 1][ind[1] - 1]) == lettres[comptelettre])
+
+            for (int i = 0; i < interdits.Count; i++)
+            {
+                if (interdits[i] == ind)
+                {
+                    return (false, indices, comptelettre);
+                }
+            }
+
+            if (Convert.ToChar(this.Matrice[ind[0] - 1][ind[1] - 1]) == lettres[comptelettre])
             {
                 newind[0] = ind[0] - 1;
                 newind[1] = ind[1] - 1;
@@ -226,7 +263,7 @@ namespace Projet_Algo
             return (false, indices, comptelettre);
         }
 
-        public (bool, Stack<int[]>, int) PresenceHautDroite(char[] lettres, Stack<int[]> indices, int comptelettre)
+        public (bool, Stack<int[]>, int) PresenceHautDroite(char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)
         {
             int[] ind = indices.Peek();
             int[] newind = new int[2];
@@ -234,7 +271,16 @@ namespace Projet_Algo
             {
                 return (false, indices, comptelettre);
             }
-            else if (Convert.ToChar(this.Matrice[ind[0] - 1][ind[1] + 1]) == lettres[comptelettre])
+
+            for (int i = 0; i < interdits.Count; i++)
+            {
+                if (interdits[i] == ind)
+                {
+                    return (false, indices, comptelettre);
+                }
+            }
+
+            if (Convert.ToChar(this.Matrice[ind[0] - 1][ind[1] + 1]) == lettres[comptelettre])
             {
                 newind[0] = ind[0] - 1;
                 newind[1] = ind[1] + 1;
@@ -262,6 +308,7 @@ namespace Projet_Algo
                     else if (this.Matrice[i][j] == null)
                     {
                         this.Matrice[i][j] = this.Matrice[i - 1][j];
+                        this.Matrice[i - 1][j] = null;
                     }
                 }
             }
