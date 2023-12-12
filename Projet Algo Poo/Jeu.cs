@@ -80,17 +80,27 @@ namespace Projet_Algo_Poo
 
 
             Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
-            string mot = Console.ReadLine();
+            string mot1 = Console.ReadLine();
 
-            bool dicto = dico.RechDichoRecursif(mot);
+            bool dicto = dico.RechDichoRecursif(mot1);
             while (dicto == false)
             {
                 Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
                 Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
-                mot = Console.ReadLine();
-                dicto = dico.RechDichoRecursif(mot);
+                mot1 = Console.ReadLine();
+                dicto = dico.RechDichoRecursif(mot1);
             }
-            Console.WriteLine("ca marche");
+
+            Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
+            string mot2 = Console.ReadLine();
+            while (dicto == false)
+            {
+                Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
+                Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
+                mot2 = Console.ReadLine();
+                dicto = dico.RechDichoRecursif(mot2);
+            }
+
         }
     }
 }
