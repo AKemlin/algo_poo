@@ -17,7 +17,9 @@ namespace Projet_Algo_Poo
             Console.WriteLine("Pendant ce temps, Paul travaillait sur l'interface utilisateur. Il conçut un plateau de jeu clair et agréable à l'œil, avec des animations fluides pour les mouvements des lettres et les événements spéciaux. Il veilla aussi à ce que le jeu soit accessible et facile à comprendre pour les joueurs de tous niveaux.");
             Console.WriteLine("Après plusieurs semaine de travail acharné, le jeu, qu'ils nommèrent \"AlgoScrabble\", était prêt. Ils le testèrent avec leurs amis et furent ravis de voir que leur création était non seulement amusante, mais aussi éducative. Les joueurs pouvaient améliorer leur vocabulaire tout en apprenant des concepts d'algorithmique.");
             Console.WriteLine("Le jeu rencontra un succès inattendu dans la communauté des développeurs et des amateurs de jeux de mots. Paul et Amaury parlèrent de leur expérience unique dans la création d'un jeu combinant programmation et divertissement. AlgoScrabble devint un exemple inspirant de la manière dont la passion pour la programmation et le jeu peut mener à des créations innovantes et enrichissantes.");
-            Dictionnaire dico = new Dictionnaire("Mots_Français.txt");
+            List<string> lignes = new List<string> { };
+            Dictionnaire dico = new Dictionnaire(lignes);
+            dico.tout();
             Console.WriteLine(" ");
             Console.WriteLine("Nom du joueur 1 ? ");
             Joueurs joueur1 = new Joueurs(Console.ReadLine());
@@ -75,20 +77,12 @@ namespace Projet_Algo_Poo
             bool dicto= dico.RechDichoRecursif(mot);
             while (dicto == false)
             {
-                if(dicto==false)
-                {
-                    Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
-                    Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
-                    mot =Console.ReadLine();
-                    dicto = dico.RechDichoRecursif(mot);
-                }
-                else
-                {
-                Console.WriteLine("ca marche");
-                }
+                 Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
+                 Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
+                 mot =Console.ReadLine();
+                 dicto = dico.RechDichoRecursif(mot);
             }
-
-
+            Console.WriteLine("ca marche");
         }
     }
 }

@@ -8,8 +8,12 @@ namespace Projet_Algo_Poo
 {
     class Dictionnaire
     {
-        string[] lignes = new string[] { };
-        public Dictionnaire(string cheminFichier)
+        List<string> lignes = new List<string> { };
+        public Dictionnaire(List<string> lignes)
+        {
+            this.lignes = lignes;
+        }
+        public void tout()
         {
             string CheminFichier = "..//..//..//Mots_Français.txt";
             using (StreamReader sr = new StreamReader(CheminFichier))
@@ -26,12 +30,12 @@ namespace Projet_Algo_Poo
                         LignesListe.Add(mot);
                     }
                 }
-                lignes = LignesListe.ToArray();
+                this.lignes = LignesListe;
             }
             /*
             // Afficher la liste finale du dictionnaire trier
             string memoire = " ";
-            foreach (string mot in lignes)
+            foreach (string mot in this.lignes)
             {
                 if (mot[0] == 'A')
                 {
@@ -121,39 +125,22 @@ namespace Projet_Algo_Poo
                 return false;
             }
             int indexLigne = mot[0] - 'A'; // A = 0, B = 1, etc.
-            if (indexLigne < 0 || indexLigne >= lignes.Length)
+            if (indexLigne < 0 || indexLigne >= this.lignes.Count)
             {
                 return false;
             }
-            string[] mots = lignes[indexLigne].Split(' ');
+            string[] mots = this.lignes[indexLigne].Split(' ');
             return RechercheDichotomique(mots, mot, 0, mots.Length - 1);
         }
 
-        public bool RechDichoRecursif(string mot)
-        {
-            if (string.IsNullOrEmpty(mot))
-            {
-                return false;
-            }
-
-            int indexLigne = mot[0] - 'A'; // A = 0, B = 1, etc.
-            if (indexLigne < 0 || indexLigne >= lignes.Length)
-            {
-                return false;
-            }
-            string[] mots = lignes[indexLigne].Split(' ');
-            return RechercheDichotomique(mots, mot, 0, mots.Length - 1);
-        }
         private bool RechercheDichotomique(string[] mots, string mot, int gauche, int droite)
         {
             if (gauche > droite)
             {
                 return false;
             }
-
             int milieu = gauche + (droite - gauche) / 2;
             int resultat = mots[milieu].CompareTo(mot);
-
             if (resultat == 0)
             {
                 return true;
