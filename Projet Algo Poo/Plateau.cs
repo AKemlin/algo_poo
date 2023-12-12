@@ -134,14 +134,16 @@ namespace Projet_Algo
             if (p == true)
             {
                 (bool present, Stack<int[]> indicesfinal) = Recherche(lettres, indices, interdits, comptelettre);
-
+                Console.WriteLine();
+                Console.WriteLine(indicesfinal.Count);
                 if (present == true)
                 {
                     for (int i = 0; i < indicesfinal.Count; i++)
                     {
-                        int[] indicesup = indicesfinal.Peek();
+                        int[] indicesup = indicesfinal.Pop();
+                        Console.WriteLine(indicesup[0]);
+                        Console.WriteLine(indicesup[1]);
                         this.Matrice[indicesup[0]][indicesup[1]] = " ";
-                        indicesfinal.Pop();
                         
                         
                     }
@@ -156,7 +158,7 @@ namespace Projet_Algo
 
         public (bool, Stack<int[]>) Recherche(char[] lettres, Stack<int[]> indices, List<int[]> interdits,int comptelettre)
         {
-            
+            Console.WriteLine(comptelettre);
             if (comptelettre >= lettres.Length)
             {
                 return (true,indices);

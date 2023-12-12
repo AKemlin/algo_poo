@@ -88,8 +88,9 @@ namespace Projet_Algo_Poo
                 {
                     Console.WriteLine("Le mot n'est pas dans le plateau");
                 }
-                
+
             }
+        
 
             /*
             Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
@@ -113,6 +114,7 @@ namespace Projet_Algo_Poo
                 mot2 = Console.ReadLine();
                 dicto = dico.RechDichoRecursif(mot2);
             }
+            */
 
         }
     }
