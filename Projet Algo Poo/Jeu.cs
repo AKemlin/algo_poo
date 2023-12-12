@@ -99,7 +99,7 @@ namespace Projet_Algo_Poo
                 Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
                 Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
                 mot1 = Console.ReadLine();
-                dicto = dico.RechDichoRecursif(mot1);
+                //dicto = dico.RechDichoRecursif(mot1);
             }
 
             Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
@@ -110,10 +110,20 @@ namespace Projet_Algo_Poo
                 Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
                 Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
                 mot2 = Console.ReadLine();
-                dicto = dico.RechDichoRecursif(mot2);
+                //dicto = dico.RechDichoRecursif(mot2);
             }
-            joueur1.Add_Mot(mot1);
-            joueur2.Add_Mot(mot2);
+
+            bool vrai1 = joueur1.Contient(mot1);
+            if (vrai1 == false)
+            {
+                joueur1.Add_Mot(mot1);
+            }
+
+            bool vrai2 = joueur2.Contient(mot2);
+            if (vrai2 == false)
+            {
+                joueur2.Add_Mot(mot2);
+            }
         }
     }
 }
