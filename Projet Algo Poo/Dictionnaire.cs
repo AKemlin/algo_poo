@@ -12,6 +12,8 @@ namespace Projet_Algo_Poo
         public Dictionnaire(List<string> lignes)
         {
             this.lignes = lignes;
+            //this.tout();
+            //Console.WriteLine(this.lignes[5]);
         }
         public void tout()
         {
@@ -20,15 +22,14 @@ namespace Projet_Algo_Poo
             {
                 List<string> LignesListe = new List<string>();
                 string ligne;
+                int compteLigne = 0;
                 while ((ligne = sr.ReadLine()) != null)
                 {
                     // Trier chaque ligne
                     string[] mots = ligne.Split(' ');
                     QuickSort(mots, 0, mots.Length - 1);
-                    foreach (string mot in mots)
-                    {
-                        LignesListe.Add(mot);
-                    }
+                    string ligneStr = String.Join(" ", mots);
+                    LignesListe.Add(ligneStr);
                 }
                 this.lignes = LignesListe;
             }
@@ -59,22 +60,28 @@ namespace Projet_Algo_Poo
             */
 
             Dictionary<char, int> NombreDeMots = new Dictionary<char, int>();
-            foreach (string mot in this.lignes)
+
+            // iteration sur les lettres 
+
+            foreach(string ligne in this.lignes)
             {
-                // S'assurer que le mot n'est pas vide
-                if (!string.IsNullOrEmpty(mot))
+                foreach (string mot in ligne.Split(" "))
                 {
-                    // Prendre la première lettre du mot et la convertir en majuscule
-                    char lettre = char.ToUpper(mot[0]);
-                    // Si la lettre est déjà dans le dictionnaire, incrémenter la valeur
-                    // Sinon, ajouter la lettre avec une valeur initiale de 1
-                    if (NombreDeMots.ContainsKey(lettre))
+                    // S'assurer que le mot n'est pas vide
+                    if (!string.IsNullOrEmpty(mot))
                     {
-                        NombreDeMots[lettre]++;
-                    }
-                    else
-                    {
-                        NombreDeMots.Add(lettre, 1);
+                        // Prendre la première lettre du mot et la convertir en majuscule
+                        char lettre = char.ToUpper(mot[0]);
+                        // Si la lettre est déjà dans le dictionnaire, incrémenter la valeur
+                        // Sinon, ajouter la lettre avec une valeur initiale de 1
+                        if (NombreDeMots.ContainsKey(lettre))
+                        {
+                            NombreDeMots[lettre]++;
+                        }
+                        else
+                        {
+                            NombreDeMots.Add(lettre, 1);
+                        }
                     }
                 }
             }
@@ -124,23 +131,26 @@ namespace Projet_Algo_Poo
             {
                 return false;
             }
-            int indexLigne = mot[0] - 'A'; // A = 0, B = 1, etc.
-            if (indexLigne < 0 || indexLigne >= this.lignes.Count)
+            mot = mot.ToUpper(); // Convertir le mot en majuscules
+            int indexLigne = mot[0] - 'A';
+            if (indexLigne < 0 || indexLigne >= lignes.Count)
             {
                 return false;
             }
-            string[] mots = this.lignes[indexLigne].Split(' ');
-            return RechercheDichotomique(mots, mot, 0, mots.Length - 1);
+            return RechercheDichotomique(this.lignes[indexLigne], mot, 0, this.lignes.Count - 1);
         }
 
-        private bool RechercheDichotomique(string[] mots, string mot, int gauche, int droite)
+        private bool RechercheDichotomique(string mots, string mot, int gauche, int droite)
         {
             if (gauche > droite)
             {
                 return false;
             }
+            
             int milieu = gauche + (droite - gauche) / 2;
-            int resultat = mots[milieu].CompareTo(mot);
+            char motssss = Convert.ToChar(mots[milieu]);
+            int resultat = motssss.CompareTo(Convert.ToChar(mot));
+
             if (resultat == 0)
             {
                 return true;
