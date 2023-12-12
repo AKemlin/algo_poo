@@ -115,22 +115,45 @@ namespace Projet_Algo
         public (bool,string[][]) Recherche_Mot(string mot)  // recherche si le mot entré est present dans le plateau selon les règles 
         {
             char[] lettres = mot.ToCharArray();
+            Console.WriteLine(lettres[0]);
+            Console.WriteLine(lettres[1]);
+            Console.WriteLine(lettres[2]);
+            Console.WriteLine(lettres[3]);
+            Console.WriteLine(lettres[4]);
+            Console.WriteLine(lettres[5]);
+
             Stack<int[]> indices = new Stack<int[]>();
             List<int[]> interdits = new List<int[]>();
             int[] indicelettres = new int[2];
             int comptelettre = 0;
-            
-            (bool present, Stack<int[]> indicesfinal)  = Recherche(lettres, indices, interdits,comptelettre);
-            
-            if (present == true)
+            bool p = false;
+            for (int i = 0; i < this.Cote; i++)
             {
-                for (int i = 0; i < indicesfinal.Count; i++)
+                if (this.Matrice[this.Cote - 1][i] == Convert.ToString(lettres[comptelettre]))
                 {
-                    int[] indicesup = indicesfinal.Peek();
-                    this.Matrice[indicesup[0]][indicesup[1]] = null;
+                    int[] indtransi = new int [2] {this.Cote-1,i};
+                    indices.Push (indtransi);
+                    p = true;
+                    Console.WriteLine("la");
                 }
-                return (true, this.Matrice);
             }
+            if (p == true)
+            {
+                (bool present, Stack<int[]> indicesfinal) = Recherche(lettres, indices, interdits, comptelettre);
+
+                if (present == true)
+                {
+                    for (int i = 0; i < indicesfinal.Count; i++)
+                    {
+                        int[] indicesup = indicesfinal.Pop();
+                        this.Matrice[indicesup[0]][indicesup[1]] = "-";
+                        Console.WriteLine("a");
+                        
+                    }
+                    return (true, this.Matrice);
+                }
+            }
+            
             return (false, this.Matrice);
 
 
@@ -144,12 +167,12 @@ namespace Projet_Algo
                 return (true,indices);
             }
 
-            else if (comptelettre == 0 && PresenceGauche(lettres,indices,interdits,comptelettre) == false && PresenceDroite(lettres, indices, interdits, comptelettre) == false && PresenceHaut(lettres, indices, interdits, comptelettre) == false && PresenceHautGauche(lettres, indices, interdits, comptelettre) == false && PresenceHautDroite(lettres, indices, interdits, comptelettre) == false)
+            else if (comptelettre == 1 && PresenceGauche(lettres,indices,interdits,comptelettre) == false && PresenceDroite(lettres, indices, interdits, comptelettre) == false && PresenceHaut(lettres, indices, interdits, comptelettre) == false && PresenceHautGauche(lettres, indices, interdits, comptelettre) == false && PresenceHautDroite(lettres, indices, interdits, comptelettre) == false)
             {
                 return (false,indices);
             }
 
-            else if (comptelettre > 0 && PresenceGauche(lettres, indices, interdits, comptelettre) == false && PresenceDroite(lettres, indices, interdits, comptelettre) == false && PresenceHaut(lettres, indices, interdits, comptelettre) == false && PresenceHautGauche(lettres, indices, interdits, comptelettre) == false && PresenceHautDroite(lettres, indices, interdits, comptelettre) == false)
+            else if (comptelettre > 1 && PresenceGauche(lettres, indices, interdits, comptelettre) == false && PresenceDroite(lettres, indices, interdits, comptelettre) == false && PresenceHaut(lettres, indices, interdits, comptelettre) == false && PresenceHautGauche(lettres, indices, interdits, comptelettre) == false && PresenceHautDroite(lettres, indices, interdits, comptelettre) == false)
             {
                 int[] transiinterdits = indices.Peek();
                 interdits.Add(transiinterdits);
@@ -172,8 +195,9 @@ namespace Projet_Algo
                 int[] ind = indices.Peek();
                 int[] newind = new int[2];
                 newind[0] = ind[0];
-                newind[1] = ind[1] - 1;
+                newind[1] = ind[1] + 1;
                 indices.Push(newind);
+                Console.WriteLine("ici");
                 return Recherche(lettres, indices, interdits, comptelettre++);
             }
 
@@ -181,8 +205,8 @@ namespace Projet_Algo
             {
                 int[] ind = indices.Peek();
                 int[] newind = new int[2];
-                newind[0] = ind[0];
-                newind[1] = ind[1] - 1;
+                newind[0] = ind[0] - 1;
+                newind[1] = ind[1];
                 indices.Push(newind);
                 return Recherche(lettres, indices, interdits, comptelettre++);
             }
@@ -191,7 +215,7 @@ namespace Projet_Algo
             {
                 int[] ind = indices.Peek();
                 int[] newind = new int[2];
-                newind[0] = ind[0];
+                newind[0] = ind[0] - 1;
                 newind[1] = ind[1] - 1;
                 indices.Push(newind);
                 return Recherche(lettres, indices, interdits, comptelettre++);
@@ -201,8 +225,8 @@ namespace Projet_Algo
             {
                 int[] ind = indices.Peek();
                 int[] newind = new int[2];
-                newind[0] = ind[0];
-                newind[1] = ind[1] - 1;
+                newind[0] = ind[0]- 1;
+                newind[1] = ind[1] + 1;
                 indices.Push(newind);
                 return Recherche(lettres, indices, interdits, comptelettre++);
             }
@@ -227,11 +251,9 @@ namespace Projet_Algo
                 }
             }
             
-            if (Convert.ToChar(this.Matrice[ind[0]][ind[1]-1]) == lettres[comptelettre])
+            if (this.Matrice[ind[0]][ind[1]-1] == Convert.ToString(lettres[comptelettre]))
             {
-                newind[0] = ind[0];
-                newind[1] = ind[1]-1;
-                indices.Push(newind);
+                Console.WriteLine("test1");
                 return true;
             }
             return false;
@@ -241,11 +263,6 @@ namespace Projet_Algo
         {
             int[] ind = indices.Peek();
             int[] newind = new int[2];
-            if (ind[1] == this.Cote-1)
-            {
-                return false;
-            }
-
             for (int i = 0; i < interdits.Count; i++)
             {
                 if (interdits[i] == ind)
@@ -253,12 +270,16 @@ namespace Projet_Algo
                     return false;
                 }
             }
-
-            if (Convert.ToChar(this.Matrice[ind[0]][ind[1] + 1]) == lettres[comptelettre])
+            Console.WriteLine("test");
+            if (ind[1] == this.Cote-1)
             {
-                newind[0] = ind[0];
-                newind[1] = ind[1] + 1;
-                indices.Push(newind);
+                return false;
+            }
+            
+            else if (this.Matrice[ind[0]][ind[1] + 1] == Convert.ToString(lettres[comptelettre]))
+            {
+
+                Console.WriteLine("test1");
                 return true;
             }
             return false;
@@ -281,11 +302,9 @@ namespace Projet_Algo
                 }
             }
 
-            if (Convert.ToChar(this.Matrice[ind[0] - 1][ind[1]]) == lettres[comptelettre])
+            if (this.Matrice[ind[0] - 1][ind[1]] == Convert.ToString(lettres[comptelettre]))
             {
-                newind[0] = ind[0] - 1;
-                newind[1] = ind[1];
-                indices.Push(newind);
+                Console.WriteLine("test1");
                 return true;
             }
             return false;
@@ -308,11 +327,9 @@ namespace Projet_Algo
                 }
             }
 
-            if (Convert.ToChar(this.Matrice[ind[0] - 1][ind[1] - 1]) == lettres[comptelettre])
+            if (this.Matrice[ind[0] - 1][ind[1] - 1] == Convert.ToString(lettres[comptelettre]))
             {
-                newind[0] = ind[0] - 1;
-                newind[1] = ind[1] - 1;
-                indices.Push(newind);
+                Console.WriteLine("test1");
                 return true;
             }
             return false;
@@ -335,11 +352,9 @@ namespace Projet_Algo
                 }
             }
 
-            if (Convert.ToChar(this.Matrice[ind[0] - 1][ind[1] + 1]) == lettres[comptelettre])
+            if (this.Matrice[ind[0] - 1][ind[1] + 1] == Convert.ToString(lettres[comptelettre]))
             {
-                newind[0] = ind[0] - 1;
-                newind[1] = ind[1] + 1;
-                indices.Push(newind);
+                Console.WriteLine("test1");
                 return true;
             }
             return false;
@@ -356,14 +371,14 @@ namespace Projet_Algo
                     {
                         break;
                     }
-                    else if (this.Matrice[i - 1][j] == null)
+                    else if (this.Matrice[i - 1][j] == "-")
                     {
                         break;
                     }
-                    else if (this.Matrice[i][j] == null)
+                    else if (this.Matrice[i][j] == "-")
                     {
                         this.Matrice[i][j] = this.Matrice[i - 1][j];
-                        this.Matrice[i - 1][j] = null;
+                        this.Matrice[i - 1][j] = "-";
                     }
                 }
             }

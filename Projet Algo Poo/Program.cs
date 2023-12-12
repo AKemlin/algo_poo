@@ -69,9 +69,21 @@ namespace Projet_Algo_Poo
                 Plateau grille = new Plateau(matrice, cote);
                 grille.ToRead(chemin);
                 Console.WriteLine(grille.ToString());
+                Console.WriteLine("saisir un mot");
+                string mottest = Console.ReadLine();
+                (bool presence, grille.Matrice) = grille.Recherche_Mot(mottest);
+                if (presence == true)
+                {
+                    Console.WriteLine("Le mot est présent dans le plateau");
+                    Console.WriteLine(grille.ToString());
+                }
+                else if (presence == false)
+                {
+                    Console.WriteLine("Le mot n'est pas présent dans le plateau");
+                }
             }
 
-            
+            /*
             Console.WriteLine(joueur1.AppelationP +" veuillez rentrez votre mot : ");
             string mot = Console.ReadLine();
             bool dicto= dico.RechDichoRecursif(mot);
@@ -83,6 +95,7 @@ namespace Projet_Algo_Poo
                  dicto = dico.RechDichoRecursif(mot);
             }
             Console.WriteLine("ca marche");
+            */
         }
     }
 }
