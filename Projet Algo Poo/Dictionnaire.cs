@@ -114,7 +114,6 @@ namespace Projet_Algo_Poo
                 QuickSort(Milieu, i, right);
         }
         // Recherche dichotomique
-        
         public bool RechDichoRecursif(string mot)
         {
             if (string.IsNullOrEmpty(mot))
@@ -122,6 +121,45 @@ namespace Projet_Algo_Poo
                 return false;
             }
             int indexLigne = mot[0] - 'A'; // A = 0, B = 1, etc.
+            if (indexLigne < 0 || indexLigne >= lignes.Length)
+            {
+                return false;
+            }
+            string[] mots = lignes[indexLigne].Split(' ');
+            return RechercheDichotomique(mots, mot, 0, mots.Length - 1);
+        }
+
+        private bool RechercheDichotomique(string[] mots, string mot, int gauche, int droite)
+        {
+            if (gauche > droite)
+            {
+                return false;
+            }
+
+            int milieu = gauche + (droite - gauche) / 2;
+            int resultat = mots[milieu].CompareTo(mot);
+
+            if (resultat == 0)
+            {
+                return true;
+            }
+            else if (resultat < 0)
+            {
+                return RechercheDichotomique(mots, mot, milieu + 1, droite);
+            }
+            else
+            {
+                return RechercheDichotomique(mots, mot, gauche, milieu - 1);
+            }
+        }
+        /*
+        public bool RechDichoRecursif(string mot)
+        {
+            if (string.IsNullOrEmpty(mot))
+            {
+                return false;
+            }
+            int indexLigne = mot[0] - 'A';
             if (indexLigne < 0 || indexLigne >= lignes.Length)
             {
                 return false;
@@ -148,5 +186,6 @@ namespace Projet_Algo_Poo
             }
             return false;
         }
+        */
     }
 }
