@@ -112,53 +112,49 @@ namespace Projet_Algo
         }
 
 
-        public string[][] Recherche_Mot(string mot)  // recherche si le mot entré est present dans le plateau selon les règles 
+        public (bool,string[][]) Recherche_Mot(string mot)  // recherche si le mot entré est present dans le plateau selon les règles 
         {
             char[] lettres = mot.ToCharArray();
             Stack<int[]> indices = new Stack<int[]>();
             List<int[]> interdits = new List<int[]>();
             int[] indicelettres = new int[2];
+            int comptelettre = 0;
             
-            bool p = false;
-            int comptelettre = 1;
-            for (int i = 0; i < this.Cote; i++)
+            (bool present, Stack<int[]> indicesfinal)  = Recherche(lettres, indices, interdits,comptelettre);
+            
+            if (present == true)
             {
-                if (Convert.ToChar(this.Matrice[this.Cote - 1][i]) == lettres[0])
+                for (int i = 0; i < indicesfinal.Count; i++)
                 {
-                    p = true;
-                    indicelettres[0] = i;
-                    indicelettres[1] = this.Cote - 1;
-                    indices.Push(indicelettres);
+                    int[] indicesup = indicesfinal.Peek();
+                    this.Matrice[indicesup[0]][indicesup[1]] = null;
                 }
+                return (true, this.Matrice);
+            }
+            return (false, this.Matrice);
 
-            }
-            if (p == false)
-            {
-                Console.WriteLine("Le mot écrit n'est pas présent dans le plateau (Le mot doit commencer à partir du bas du plateau)");
-                return this.Matrice;
-            }
-            
-            return this.Matrice;
-            
 
         }
 
-        public bool Recherche(char[] lettres, Stack<int[]> indices, List<int[]> interdits,int comptelettre)
+        public (bool, Stack<int[]>) Recherche(char[] lettres, Stack<int[]> indices, List<int[]> interdits,int comptelettre)
         {
             
             if (comptelettre > lettres.Length)
             {
-                return true;
+                return (true,indices);
             }
 
-            else if (comptelettre == 1 && PresenceGauche(lettres,indices,interdits,comptelettre) == false && PresenceDroite(lettres, indices, interdits, comptelettre) == false && PresenceHaut(lettres, indices, interdits, comptelettre) == false && PresenceHautGauche(lettres, indices, interdits, comptelettre) == false && PresenceHautDroite(lettres, indices, interdits, comptelettre) == false)
+            else if (comptelettre == 0 && PresenceGauche(lettres,indices,interdits,comptelettre) == false && PresenceDroite(lettres, indices, interdits, comptelettre) == false && PresenceHaut(lettres, indices, interdits, comptelettre) == false && PresenceHautGauche(lettres, indices, interdits, comptelettre) == false && PresenceHautDroite(lettres, indices, interdits, comptelettre) == false)
             {
-                return false;
+                return (false,indices);
             }
 
-            else if (comptelettre > 1 && PresenceGauche(lettres, indices, interdits, comptelettre) == false && PresenceDroite(lettres, indices, interdits, comptelettre) == false && PresenceHaut(lettres, indices, interdits, comptelettre) == false && PresenceHautGauche(lettres, indices, interdits, comptelettre) == false && PresenceHautDroite(lettres, indices, interdits, comptelettre) == false)
+            else if (comptelettre > 0 && PresenceGauche(lettres, indices, interdits, comptelettre) == false && PresenceDroite(lettres, indices, interdits, comptelettre) == false && PresenceHaut(lettres, indices, interdits, comptelettre) == false && PresenceHautGauche(lettres, indices, interdits, comptelettre) == false && PresenceHautDroite(lettres, indices, interdits, comptelettre) == false)
             {
-                return false;
+                int[] transiinterdits = indices.Peek();
+                interdits.Add(transiinterdits);
+                indices.Pop();
+                return Recherche(lettres, indices, interdits, comptelettre--);
             }
 
             else if (PresenceGauche(lettres, indices, interdits, comptelettre) == true)
@@ -211,7 +207,7 @@ namespace Projet_Algo
                 return Recherche(lettres, indices, interdits, comptelettre++);
             }
 
-            return true;
+            return (true, indices);
         }
 
         public bool PresenceGauche (char[] lettres, Stack<int[]> indices, List<int[]> interdits, int comptelettre)

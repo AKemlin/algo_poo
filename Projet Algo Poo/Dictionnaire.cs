@@ -9,7 +9,14 @@ namespace Projet_Algo_Poo
     class Dictionnaire
     {
         string[] lignes = new string[] {};
-        public Dictionnaire(string cheminFichier)
+        public Dictionnaire(string[] lignes)
+        {
+
+            this.lignes = lignes;
+           
+        }
+
+        public void TRI()
         {
             string CheminFichier = "..//..//..//Mots_Français.txt";
             using (StreamReader sr = new StreamReader(CheminFichier))
@@ -26,7 +33,7 @@ namespace Projet_Algo_Poo
                         LignesListe.Add(mot);
                     }
                 }
-                lignes = LignesListe.ToArray();
+                this.lignes = LignesListe.ToArray();
             }
             /*
             // Afficher la liste finale du dictionnaire trier
@@ -55,7 +62,7 @@ namespace Projet_Algo_Poo
             */
 
             Dictionary<char, int> NombreDeMots = new Dictionary<char, int>();
-            foreach (string mot in lignes)
+            foreach (string mot in this.lignes)
             {
                 // S'assurer que le mot n'est pas vide
                 if (!string.IsNullOrEmpty(mot))
@@ -120,13 +127,13 @@ namespace Projet_Algo_Poo
             if (string.IsNullOrEmpty(mot))
             {
                 return false;
-
+            }
             int indexLigne = mot[0] - 'A'; // A = 0, B = 1, etc.
-            if (indexLigne < 0 || indexLigne >= lignes.Length)
+            if (indexLigne < 0 || indexLigne >= this.lignes.Length)
             {
                 return false;
-
-            string[] mots = lignes[indexLigne].Split(' ');
+            }
+            string[] mots = this.lignes[indexLigne].Split(' ');
             int gauche = 0;
             int droite = mots.Length - 1;
             while (gauche <= droite)

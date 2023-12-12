@@ -75,8 +75,8 @@ namespace Projet_Algo_Poo
             bool dicto= dico.RechDichoRecursif(mot);
             if(dicto==false)
             {
-                Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
-                Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
+                Console.WriteLine("Le mot entré n'est pas dans le dictionnaire ! ");
+                Console.WriteLine(joueur1.AppelationP + " veuillez rentrer votre mot : ");
             }
             else
             {
