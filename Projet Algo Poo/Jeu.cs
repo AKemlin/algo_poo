@@ -121,6 +121,13 @@ namespace Projet_Algo_Poo
                     {
                         Console.WriteLine("Le mot est dans le plateau");
                         grille.Maj_Plateau();
+                        grille.Maj_Plateau();
+                        grille.Maj_Plateau();
+                        grille.Maj_Plateau();
+                        grille.Maj_Plateau();
+                        grille.Maj_Plateau();
+                        grille.Maj_Plateau();
+                        grille.Maj_Plateau();
                         Console.WriteLine(grille.ToString());
 
                         // lire fichier lettre.txt et ajouter le score du mot au joueur
@@ -160,7 +167,7 @@ namespace Projet_Algo_Poo
                         Console.WriteLine("Le mot n'est pas dans le plateau");
                     }
                 }
-                Console.WriteLine("Fin du tour");
+                Console.WriteLine("Fin du tour de " + joueur1.AppelationP);
 
 
 
@@ -184,6 +191,13 @@ namespace Projet_Algo_Poo
                     if (presence == true)
                     {
                         Console.WriteLine("Le mot est dans le plateau");
+                        grille.Maj_Plateau();
+                        grille.Maj_Plateau();
+                        grille.Maj_Plateau();
+                        grille.Maj_Plateau();
+                        grille.Maj_Plateau();
+                        grille.Maj_Plateau();
+                        grille.Maj_Plateau();
                         grille.Maj_Plateau();
                         Console.WriteLine(grille.ToString());
 
@@ -224,7 +238,7 @@ namespace Projet_Algo_Poo
                         Console.WriteLine("Le mot n'est pas dans le plateau");
                     }
                 }
-                Console.WriteLine("Fin du tour");
+                Console.WriteLine("Fin du tour de "+joueur2.AppelationP);
                 
             }
             Console.WriteLine();
