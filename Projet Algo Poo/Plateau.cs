@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace Projet_Algo
 {
@@ -68,6 +69,7 @@ namespace Projet_Algo
                 transition[i] = lignes[i].Split(';');
                 informations[i] = transition[i][0].Split(',');
             }
+
             for (int i = 0;i < this.Cote; i++)
             {
                 this.Matrice[i] = new string[this.Cote];

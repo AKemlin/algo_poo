@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,18 +78,7 @@ namespace Projet_Algo_Poo
                 {
                     grille.ToFile(cheminSave);
                 }
-            }
 
-            else if (MéthodeConstru == "2")
-            {
-                Console.WriteLine();
-                string chemin = "../../../Test1.csv";
-                int cote = File.ReadAllLines(chemin).Length;
-                string[][] matrice = new string[cote][];
-                string chainematrice = matrice.ToString();
-                Plateau grille = new Plateau(matrice, cote);
-                grille.ToRead(chemin);
-                Console.WriteLine(grille.ToString());
                 Console.WriteLine("entrer un mot");
                 string mottest = Console.ReadLine();
                 (bool presence, grille.Matrice) = grille.Recherche_Mot(mottest);
@@ -103,6 +93,63 @@ namespace Projet_Algo_Poo
                 {
                     Console.WriteLine("Le mot n'est pas dans le plateau");
                 }
+            }
+
+            else if (MéthodeConstru == "2")
+            {
+                Console.WriteLine();
+                string chemin = "../../../Test1.csv";
+                int cote = File.ReadAllLines(chemin).Length;
+                string[][] matrice = new string[cote][];
+                string chainematrice = matrice.ToString();
+                Plateau grille = new Plateau(matrice, cote);
+                grille.ToRead(chemin);
+                Console.WriteLine(grille.ToString());
+                Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
+                string mot1 = Console.ReadLine();
+                bool dicto = dico.rechercheDichoRecursif(mot1);
+                (bool presence, grille.Matrice) = grille.Recherche_Mot(mot1);
+                if (presence == true)
+                {
+                    Console.WriteLine("Le mot est dans le plateau");
+                    grille.Maj_Plateau();
+                    Console.WriteLine(grille.ToString());
+
+                    // lire fichier lettre.txt et ajouter le score du mot au joueur
+                    string cheminscore = "../../../Lettre.txt";
+                    string[] ligneslettres = File.ReadAllLines(cheminscore);
+                    string[][] transition = new string[ligneslettres.Length][];
+                    string[][] informations = new string[ligneslettres.Length][];
+                    for (int i = 0; i < ligneslettres.Length; i++)
+                    {
+                        transition[i] = ligneslettres[i].Split(';');
+                        informations[i] = transition[i][0].Split(',');
+                    }
+                    string motmaj = mot1.ToUpper();
+                    char [] lettres = motmaj.ToCharArray();
+                    int score = 0;
+                    for (int i = 0; i < lettres.Length; i++)
+                    {
+                        
+                        int ligneinfo = lettres[i] - 'A';
+                        score += Convert.ToInt32(informations[ligneinfo][2]);
+                    }
+                    Console.WriteLine(score);
+
+                    bool vrai1 = joueur1.Contient(mot1);
+                    if (vrai1 == false)
+                    {
+                        joueur1.Add_Mot(mot1);
+                        joueur1.Add_Score(score);
+                    }
+
+                }
+                else if (presence == false)
+                {
+                    Console.WriteLine("Le mot n'est pas dans le plateau");
+                }
+
+                
 
             }
             DateTime date3 = DateTime.Now;
