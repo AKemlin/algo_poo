@@ -33,7 +33,7 @@ namespace Projet_Algo_Poo
                 }
                 this.lignes = LignesListe;
             }
-
+            
             // Afficher la liste finale du dictionnaire trier
             Console.WriteLine();
             Console.WriteLine("Voulez vous afficher le dictionnaire ? (oui/non)");
@@ -68,6 +68,7 @@ namespace Projet_Algo_Poo
                 }
                 Console.WriteLine();
             }
+            
 
             Dictionary<char, int> NombreDeMots = new Dictionary<char, int>();
             foreach (string ligne in this.lignes)
