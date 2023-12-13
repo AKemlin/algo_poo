@@ -77,7 +77,6 @@ namespace Projet_Algo
                 this.Matrice[i] = new string[this.Cote];
                 
             }
-            
             int[] compteur = new int[26];
             Random r = new Random();
             for (int i = 0; i < this.Cote ; i++)
@@ -92,15 +91,12 @@ namespace Projet_Algo
                     }
                     this.Matrice[i][j] = informations[element][0].ToLower();
                     compteur[element]++;
-                    
                 }
-                    
             }
-            
         }
 
 
-        public string toString()  // Retourne une chaine de caractères qui permet d'afficher le plateau
+        public string ToString()  // Retourne une chaine de caractères qui permet d'afficher le plateau
         {
             string chainematrice = null;
             for (int i = 0; i < this.Cote; i++)

@@ -58,7 +58,6 @@ namespace Projet_Algo_Poo
             Console.WriteLine("2 : Grâce au fichier .csv");
             string MéthodeConstru = (Console.ReadLine());
             string cheminSave = "../../../Sauvegarde.csv";
-
             if (MéthodeConstru != "1" && MéthodeConstru != "2")
             {
                 while (MéthodeConstru != "1" && MéthodeConstru != "2" && MéthodeConstru != null)
@@ -67,8 +66,6 @@ namespace Projet_Algo_Poo
                     MéthodeConstru = Console.ReadLine();
                 }
             }
-
-            
             if (MéthodeConstru == "1")
             {
                 string chemin = "../../../Lettre.txt";
