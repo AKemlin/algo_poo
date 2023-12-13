@@ -79,15 +79,12 @@ namespace Projet_Algo_Poo
                 {
                     grille.ToFile(cheminSave);
                 }
-
-
-                Console.WriteLine("entrer un mot");
+                Console.WriteLine("entrer un mot");/////////////////////////
                 string mottest = Console.ReadLine();
                 (bool presence, grille.Matrice) = grille.Recherche_Mot(mottest);
                 if (presence == true)
                 {
                     Console.WriteLine("Le mot est dans le plateau");
-                    
                     grille.Maj_Plateau();
                     Console.WriteLine(grille.ToString());
                 }
@@ -96,7 +93,6 @@ namespace Projet_Algo_Poo
                     Console.WriteLine("Le mot n'est pas dans le plateau");
                 }
             }
-
             else if (MéthodeConstru == "2")
             {
                 Console.WriteLine();
@@ -122,8 +118,8 @@ namespace Projet_Algo_Poo
                         {
                             Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
                             string mot1 = Console.ReadLine();
-                            /*
-                            bool dicto = dico.RechDichoRecursif(mot1);
+                            
+                            bool dicto = dico.rechercheDichotomiqueRecursif(mot1);
                             while (dicto == false)
                             {
 
@@ -131,10 +127,10 @@ namespace Projet_Algo_Poo
                                 Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
                                 Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
                                 mot1 = Console.ReadLine();
-                                //dicto = dico.RechDichoRecursif(mot1);
+                                //dicto = dico.rechercheDichotomiqueRecursif(mot1);
 
                             }
-                            */
+                            
 
                             (bool presence, grille.Matrice) = grille.Recherche_Mot(mot1);
                             if (presence == true)
@@ -186,7 +182,8 @@ namespace Projet_Algo_Poo
                     string mot2 = Console.ReadLine();
                     while (DateTime.Now - date2 < tempspartour)
                     {
-                        bool dicto = dico.RechDichoRecursif(mot2);
+                        
+                        bool dicto = dico.rechercheDichotomiqueRecursif(mot2);
                         while (dicto == false)
                         {
                             if (DateTime.Now - date2 < tempspartour)
@@ -194,9 +191,10 @@ namespace Projet_Algo_Poo
                                 Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
                                 Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
                                 mot2 = Console.ReadLine();
-                                //dicto = dico.RechDichoRecursif(mot2);
+                                //dicto = dico.rechercheDichotomiqueRecursif(mot2);
                             }
                         }
+                        
                     }
                     Console.WriteLine("Fin du tour");
                     /*

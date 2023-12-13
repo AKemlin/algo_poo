@@ -188,7 +188,7 @@ namespace Projet_Algo_Poo
         }
         */
 
-        public bool rechercheDichoRecursif(string mot, int fin, int début = 0)      //recherche dichotomique en récursif terminale afin de chercher un mot dans le dictionnaire. Exécuter par cette méthode permet de réduire la complexité
+        public bool rechercheDichotomiqueRecursif(string mot, int fin, int début = 0)      //recherche dichotomique en récursif terminale afin de chercher un mot dans le dictionnaire. Exécuter par cette méthode permet de réduire la complexité
         {
             if (this.lignes == null || this.lignes.Count == 0)  //Les deux conditions permettent d'améliorer la complexité
             {
@@ -214,11 +214,11 @@ namespace Projet_Algo_Poo
                 }
                 if (compare1 < 0)
                 {
-                    return rechercheDichoRecursif(mot, milieu, début);
+                    return rechercheDichotomiqueRecursif(mot, milieu, début);
                 }
                 else if (compare1 > 0)
                 {
-                    return rechercheDichoRecursif(mot, fin, milieu);
+                    return rechercheDichotomiqueRecursif(mot, fin, milieu);
                 }
             }
             return false;
