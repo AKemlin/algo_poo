@@ -59,11 +59,6 @@ namespace Projet_Algo_Poo
             string MéthodeConstru = (Console.ReadLine());
             string cheminSave = "../../../Sauvegarde.csv";
 
-            Console.WriteLine("entrer un mot");
-            string mota = Console.ReadLine();
-            bool dicto = dico.RechDichoRecursif(mota);
-            Console.WriteLine(dicto);
-
             if (MéthodeConstru != "1" && MéthodeConstru != "2")
             {
                 while (MéthodeConstru != "1" && MéthodeConstru != "2" && MéthodeConstru != null)
@@ -72,6 +67,9 @@ namespace Projet_Algo_Poo
                     MéthodeConstru = Console.ReadLine();
                 }
             }
+
+            Plateau grille;
+
             if (MéthodeConstru == "1")
             {
                 string chemin = "../../../Lettre.txt";
@@ -87,13 +85,12 @@ namespace Projet_Algo_Poo
                 {
                     grille.ToFile(cheminSave);
                 }
-                Console.WriteLine("entrer un mot");
+                Console.WriteLine("entrer un mot");/////////////////////////
                 string mottest = Console.ReadLine();
                 (bool presence, grille.Matrice) = grille.Recherche_Mot(mottest);
                 if (presence == true)
                 {
                     Console.WriteLine("Le mot est dans le plateau");
-
                     grille.Maj_Plateau();
                     Console.WriteLine(grille.ToString());
                 }
@@ -102,7 +99,7 @@ namespace Projet_Algo_Poo
                     Console.WriteLine("Le mot n'est pas dans le plateau");
                 }
             }
-            else if (MéthodeConstru == "2")
+            else
             {
                 Console.WriteLine();
                 string chemin = "../../../Test1.csv";
@@ -111,14 +108,39 @@ namespace Projet_Algo_Poo
                 grille = new Plateau(matrice, cote);
                 grille.ToRead(chemin);
                 Console.WriteLine(grille.ToString());
-                Console.WriteLine("entrer un mot");
-                string mottest = Console.ReadLine();
-                (bool presence, grille.Matrice) = grille.Recherche_Mot(mottest);
-                if (presence == true)
+            }
+
+            Console.WriteLine(grille) ;
+
+
+            DateTime date3 = DateTime.Now;
+            while (DateTime.Now - date3 < TempsPartie)
+            {
+                if (DateTime.Now - date3 < TempsPartie)
                 {
-                    Console.WriteLine("Le mot est dans le plateau");
-                    grille.Maj_Plateau();
-                    Console.WriteLine(grille.ToString());
+                    DateTime date1 = DateTime.Now;
+                    
+                    while (DateTime.Now - date1 < tempspartour)
+                    {
+                        if (DateTime.Now - date1 < tempspartour)
+                        {
+                            Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
+                            string mot1 = Console.ReadLine();
+
+                            bool dicto = dico.RechDichoRecursif(mot1);
+                            while (dicto == false)
+                            {
+                                Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
+                                Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
+                                mot1 = Console.ReadLine();
+                                dicto = dico.RechDichoRecursif(mot1);
+                            }
+                            (bool presence, grille.Matrice) = grille.Recherche_Mot(mot1);
+                            if (presence == true)
+                            {
+                                Console.WriteLine("Le mot est dans le plateau");
+                                grille.Maj_Plateau();
+                                Console.WriteLine(grille.ToString());
 
                     // lire fichier lettre.txt et ajouter le score du mot au joueur
                     string cheminscore = "../../../Lettre.txt";
@@ -210,7 +232,7 @@ namespace Projet_Algo_Poo
                                 Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
                                 Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
                                 mot2 = Console.ReadLine();
-                                //dicto = dico.RechDichoRecursif(mot2);
+                                dicto = dico.RechDichoRecursif(mot2);
                             }
                         }
                         */

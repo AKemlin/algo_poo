@@ -159,7 +159,7 @@ namespace Projet_Algo_Poo
             {
                 return false;
             }
-            return rechercheDichoRecursif(mot, 0, this.lignes.Count - 1);
+            return rechercheDichotomiqueRecursif( mot, 0, this.lignes.Count - 1);
         }
         /*
         private bool RechercheDichotomique(string mots, string mot, int gauche, int droite)
@@ -188,25 +188,25 @@ namespace Projet_Algo_Poo
         }
         */
 
-        public bool rechercheDichoRecursif(string mot, int fin, int debut = 0)      //recherche dichotomique en récursif terminale afin de chercher un mot dans le dictionnaire. Exécuter par cette méthode permet de réduire la complexité
+        public bool rechercheDichotomiqueRecursif(string mot, int debut, int fin)      //recherche dichotomique en récursif terminale afin de chercher un mot dans le dictionnaire. Exécuter par cette méthode permet de réduire la complexité
         {
             if (this.lignes == null || this.lignes.Count == 0)  //Les deux conditions permettent d'améliorer la complexité
             {
                 return false;
             }
              
-            if (debut > fin)
+            if (fin > debut)
             {
                 return false;
             }
-            int milieu = (fin + debut) / 2;
+            int milieu = (debut + fin) / 2;
 
             int compare1 = string.Compare(mot, this.lignes[milieu]);  //Fonction compare pour comparer les mots.
-            if (fin - debut == 1)
+            if (debut - fin == 1)
             {
-                return this.lignes[debut] == mot || this.lignes[fin] == mot;    //Fin - début == 1 permet de ne pas se retrouver avec un stackOverFlow
+                return this.lignes[fin] == mot || this.lignes[debut] == mot;    //Fin - début == 1 permet de ne pas se retrouver avec un stackOverFlow
             }
-            if (debut < fin)    //Comparaison afin de vérifier si la condition de récursion est respectée.
+            if (fin < debut)    //Comparaison afin de vérifier si la condition de récursion est respectée.
             {
                 if (compare1 == 0)
                 {
@@ -214,11 +214,11 @@ namespace Projet_Algo_Poo
                 }
                 if (compare1 < 0)
                 {
-                    return rechercheDichoRecursif(mot, debut, milieu);
+                    return rechercheDichotomiqueRecursif(mot, debut, milieu);
                 }
                 else if (compare1 > 0)
                 {
-                    return rechercheDichoRecursif(mot, milieu, fin);
+                    return rechercheDichotomiqueRecursif(mot, milieu, fin);
                 }
             }
             return false;
