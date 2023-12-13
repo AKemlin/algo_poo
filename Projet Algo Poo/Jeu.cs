@@ -141,75 +141,67 @@ namespace Projet_Algo_Poo
                         joueur1.Add_Mot(mot1);
                         joueur1.Add_Score(score);
                     }
-
                 }
                 else if (presence == false)
                 {
                     Console.WriteLine("Le mot n'est pas dans le plateau");
                 }
-
-                
-
             }
             DateTime date3 = DateTime.Now;
             while (DateTime.Now - date3 < TempsPartie)
             {
-                while (DateTime.Now - date3 < TempsPartie)
+                if (DateTime.Now - date3 < TempsPartie)
                 {
-                    if (DateTime.Now - date3 < TempsPartie)
+                    DateTime date1 = DateTime.Now;
+                    Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
+                    string mot1 = Console.ReadLine();
+                    while (DateTime.Now - date1 < tempspartour)
                     {
-                        DateTime date1 = DateTime.Now;
-                        Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
-                        string mot1 = Console.ReadLine();
-                        while (DateTime.Now - date1 < tempspartour)
+                        bool dicto = dico.RechDichoRecursif(mot1);
+                        while (dicto == false)
                         {
-                            bool dicto = dico.RechDichoRecursif(mot1);
-                            while (dicto == false)
+                            if (DateTime.Now - date1 < tempspartour)
                             {
-                                while (DateTime.Now - date1 < tempspartour)
-                                {
-                                    Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
-                                    Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
-                                    mot1 = Console.ReadLine();
-                                    //dicto = dico.RechDichoRecursif(mot1);
-                                }
+                                Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
+                                Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
+                                mot1 = Console.ReadLine();
+                                //dicto = dico.RechDichoRecursif(mot1);
                             }
                         }
-                        Console.WriteLine("Fin du tour");
-
-                        DateTime date2 = DateTime.Now;
-                        Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
-                        string mot2 = Console.ReadLine();
-                        while (DateTime.Now - date2 < tempspartour)
-                        {
-                            bool dicto = dico.RechDichoRecursif(mot2);
-                            while (dicto == false)
-                            {
-                                while (DateTime.Now - date2 < tempspartour)
-                                {
-                                    Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
-                                    Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
-                                    mot2 = Console.ReadLine();
-                                    //dicto = dico.RechDichoRecursif(mot2);
-                                }
-                            }
-                        }
-                        Console.WriteLine("Fin du tour");
-                        /*
-
-                        bool vrai1 = joueur1.Contient(mot1);
-                        if (vrai1 == false)
-                        {
-                            joueur1.Add_Mot(mot1);
-                        }
-
-                        bool vrai2 = joueur2.Contient(mot2);
-                        if (vrai2 == false)
-                        {
-                            joueur2.Add_Mot(mot2);
-                        }
-                        */
                     }
+                    Console.WriteLine("Fin du tour");
+                    DateTime date2 = DateTime.Now;
+                    Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
+                    string mot2 = Console.ReadLine();
+                    while (DateTime.Now - date2 < tempspartour)
+                    {
+                        bool dicto = dico.RechDichoRecursif(mot2);
+                        while (dicto == false)
+                        {
+                            if (DateTime.Now - date2 < tempspartour)
+                            {
+                                Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
+                                Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
+                                mot2 = Console.ReadLine();
+                                //dicto = dico.RechDichoRecursif(mot2);
+                            }
+                        }
+                    }
+                    Console.WriteLine("Fin du tour");
+                    /*
+
+                    bool vrai1 = joueur1.Contient(mot1);
+                    if (vrai1 == false)
+                    {
+                        joueur1.Add_Mot(mot1);
+                    }
+
+                    bool vrai2 = joueur2.Contient(mot2);
+                    if (vrai2 == false)
+                    {
+                        joueur2.Add_Mot(mot2);
+                    }
+                    */
                 }
             }
             Console.WriteLine("Fin de la partie");
