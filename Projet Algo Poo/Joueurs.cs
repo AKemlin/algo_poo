@@ -11,13 +11,13 @@ namespace Projet_Algo_Poo
     public class Joueurs
     {   //creation de chaque attribut de la class joueurs
         string Prenom;
-        string[] MotsT = new string[] { };
+        List<string> MotsT = new List<string> ();
         int Score;
 
-        public Joueurs(string Prenom, string[] MotsT=null, int Score=0)
+        public Joueurs(string Prenom, int Score=0)
         {
             this.Prenom = Prenom;
-            this.MotsT = MotsT;
+            this.MotsT = new List<string> ();
             this.Score = 0;
         }
         public string AppelationP
@@ -25,18 +25,18 @@ namespace Projet_Algo_Poo
             get { return this.Prenom; }
             set { this.Prenom = value; }
         }
-        public string[] MotsT1
+        public List<string> MotsT1
         {
             get { return this.MotsT; }
             set { this.MotsT = value; }
         }
-        string MotARajouter = "exemple";// Cree un mot a rajouter pour changer cette variable
+        
         public void Add_Mot(string mot)
         {
             // Ajoute le mot à la liste s'il n'est pas déjà présent
             if (!Contient(mot))
             {
-                MotsT.Append(mot); //C'est l'addition pour les tableaux
+                MotsT.Add(mot); //C'est l'addition pour les tableaux
             }
         }
         public bool Contient(string mot)
