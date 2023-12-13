@@ -19,7 +19,9 @@ namespace Projet_Algo_Poo
 
         static void Main(string[] args)
         {
-            
+            //Joueurs amaury = new Joueurs("Amaury");
+            //amaury.Add_Mot("Chaussette");
+            //amaury.Add_Score(15);
             Console.WriteLine("Voulez vous connaitre notre histoire ? (oui/non)");
             string answer3 = Console.ReadLine();
             while (answer3 != "oui" && answer3 != "non")
@@ -127,7 +129,7 @@ namespace Projet_Algo_Poo
                             string mot1 = Console.ReadLine();
 
                             bool dicto = dico.RechDichoRecursif(mot1);
-                            while (dicto == false)
+                            while (dicto == true)
                             {
                                 Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
                                 Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
@@ -186,7 +188,7 @@ namespace Projet_Algo_Poo
                     {
                         
                         bool dicto = dico.RechDichoRecursif(mot2);
-                        while (dicto == false)
+                        while (dicto == true)
                         {
                             if (DateTime.Now - date2 < tempspartour)
                             {
@@ -214,7 +216,14 @@ namespace Projet_Algo_Poo
                     */
                 }
             }
-            Console.WriteLine("Fin de la partie");
+            Console.WriteLine();
+            Console.WriteLine("Fin de la partie!");
+            Console.WriteLine(joueur1.toString());
+            Console.WriteLine();
+            Console.WriteLine(joueur2.toString());
+            Console.ReadKey();
         }
+        
     }
+
 }
