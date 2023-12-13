@@ -77,7 +77,6 @@ namespace Projet_Algo
                 this.Matrice[i] = new string[this.Cote];
                 
             }
-            
             int[] compteur = new int[26];
             Random r = new Random();
             for (int i = 0; i < this.Cote ; i++)
@@ -92,11 +91,8 @@ namespace Projet_Algo
                     }
                     this.Matrice[i][j] = informations[element][0].ToLower();
                     compteur[element]++;
-                    
                 }
-                    
             }
-            
         }
 
 
