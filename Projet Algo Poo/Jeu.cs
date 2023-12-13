@@ -56,6 +56,7 @@ namespace Projet_Algo_Poo
             Console.WriteLine("2 : Grâce au fichier .csv");
             string MéthodeConstru = (Console.ReadLine());
             string cheminSave = "../../../Sauvegarde.csv";
+
             if (MéthodeConstru != "1" && MéthodeConstru != "2")
             {
                 while (MéthodeConstru != "1" && MéthodeConstru != "2" && MéthodeConstru != null)
@@ -64,13 +65,16 @@ namespace Projet_Algo_Poo
                     MéthodeConstru = Console.ReadLine();
                 }
             }
+
+            Plateau grille;
+
             if (MéthodeConstru == "1")
             {
                 string chemin = "../../../Lettre.txt";
                 Console.WriteLine("Quelle dimension du plateau ?");
                 int cote = int.Parse(Console.ReadLine());
                 string[][] matrice = new string[cote][];
-                Plateau grille = new Plateau(matrice, cote);
+                grille = new Plateau(matrice, cote);
                 grille.ToReadRandom(chemin);
                 Console.WriteLine(grille.ToString());
                 Console.WriteLine("Voulez-vous sauvegarder le plateau dans un fichier exterieur ? (oui ou non)");
@@ -93,17 +97,20 @@ namespace Projet_Algo_Poo
                     Console.WriteLine("Le mot n'est pas dans le plateau");
                 }
             }
-            else if (MéthodeConstru == "2")
+            else
             {
                 Console.WriteLine();
                 string chemin = "../../../Test1.csv";
                 int cote = File.ReadAllLines(chemin).Length;
                 string[][] matrice = new string[cote][];
                 string chainematrice = matrice.ToString();
-                Plateau grille = new Plateau(matrice, cote);
+                grille = new Plateau(matrice, cote);
                 grille.ToRead(chemin);
                 Console.WriteLine(grille.ToString());
             }
+
+            Console.WriteLine(grille) ;
+
 
             DateTime date3 = DateTime.Now;
             while (DateTime.Now - date3 < TempsPartie)
@@ -118,20 +125,15 @@ namespace Projet_Algo_Poo
                         {
                             Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
                             string mot1 = Console.ReadLine();
-                            
-                            bool dicto = dico.rechercheDichotomiqueRecursif(mot1);
+
+                            bool dicto = dico.RechDichoRecursif(mot1);
                             while (dicto == false)
                             {
-
-
                                 Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
                                 Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
                                 mot1 = Console.ReadLine();
-                                //dicto = dico.rechercheDichotomiqueRecursif(mot1);
-
+                                dicto = dico.RechDichoRecursif(mot1);
                             }
-                            
-
                             (bool presence, grille.Matrice) = grille.Recherche_Mot(mot1);
                             if (presence == true)
                             {
@@ -183,7 +185,7 @@ namespace Projet_Algo_Poo
                     while (DateTime.Now - date2 < tempspartour)
                     {
                         
-                        bool dicto = dico.rechercheDichotomiqueRecursif(mot2);
+                        bool dicto = dico.RechDichoRecursif(mot2);
                         while (dicto == false)
                         {
                             if (DateTime.Now - date2 < tempspartour)
@@ -191,7 +193,7 @@ namespace Projet_Algo_Poo
                                 Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
                                 Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
                                 mot2 = Console.ReadLine();
-                                //dicto = dico.rechercheDichotomiqueRecursif(mot2);
+                                dicto = dico.RechDichoRecursif(mot2);
                             }
                         }
                         

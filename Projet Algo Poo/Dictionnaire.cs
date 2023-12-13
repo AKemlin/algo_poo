@@ -146,7 +146,7 @@ namespace Projet_Algo_Poo
                 QuickSort(Milieu, i, right);
         }
         // Recherche dichotomique
-        /*
+        
         public bool RechDichoRecursif(string mot)
         {
             if (string.IsNullOrEmpty(mot))
@@ -159,9 +159,9 @@ namespace Projet_Algo_Poo
             {
                 return false;
             }
-            return RechercheDichotomique(this.lignes[indexLigne], mot, 0, this.lignes.Count - 1);
+            return rechercheDichotomiqueRecursif( mot, 0, this.lignes.Count - 1);
         }
-
+        /*
         private bool RechercheDichotomique(string mots, string mot, int gauche, int droite)
         {
             if (gauche > droite)
@@ -188,25 +188,25 @@ namespace Projet_Algo_Poo
         }
         */
 
-        public bool rechercheDichotomiqueRecursif(string mot, int fin, int début = 0)      //recherche dichotomique en récursif terminale afin de chercher un mot dans le dictionnaire. Exécuter par cette méthode permet de réduire la complexité
+        public bool rechercheDichotomiqueRecursif(string mot, int debut, int fin)      //recherche dichotomique en récursif terminale afin de chercher un mot dans le dictionnaire. Exécuter par cette méthode permet de réduire la complexité
         {
             if (this.lignes == null || this.lignes.Count == 0)  //Les deux conditions permettent d'améliorer la complexité
             {
                 return false;
             }
              
-            if (début > fin)
+            if (fin > debut)
             {
                 return false;
             }
-            int milieu = (fin + début) / 2;
+            int milieu = (debut + fin) / 2;
 
             int compare1 = string.Compare(mot, this.lignes[milieu]);  //Fonction compare pour comparer les mots.
-            if (fin - début == 1)
+            if (debut - fin == 1)
             {
-                return this.lignes[début] == mot || this.lignes[fin] == mot;    //Fin - début == 1 permet de ne pas se retrouver avec un stackOverFlow
+                return this.lignes[fin] == mot || this.lignes[debut] == mot;    //Fin - début == 1 permet de ne pas se retrouver avec un stackOverFlow
             }
-            if (début < fin)    //Comparaison afin de vérifier si la condition de récursion est respectée.
+            if (fin < debut)    //Comparaison afin de vérifier si la condition de récursion est respectée.
             {
                 if (compare1 == 0)
                 {
@@ -214,11 +214,11 @@ namespace Projet_Algo_Poo
                 }
                 if (compare1 < 0)
                 {
-                    return rechercheDichotomiqueRecursif(mot, milieu, début);
+                    return rechercheDichotomiqueRecursif(mot, debut, milieu);
                 }
                 else if (compare1 > 0)
                 {
-                    return rechercheDichotomiqueRecursif(mot, fin, milieu);
+                    return rechercheDichotomiqueRecursif(mot, milieu, fin);
                 }
             }
             return false;
