@@ -19,9 +19,9 @@ namespace Projet_Algo_Poo
 
         static void Main(string[] args)
         {
-
-           
-            
+            //Joueurs amaury = new Joueurs("Amaury");
+            //amaury.Add_Mot("Chaussette");
+            //amaury.Add_Score(15);
             Console.WriteLine("Voulez vous connaitre notre histoire ? (oui/non)");
             string answer3 = Console.ReadLine();
             while (answer3 != "oui" && answer3 != "non")
@@ -227,7 +227,13 @@ namespace Projet_Algo_Poo
                 Console.WriteLine("Fin du tour");
                 
             }
-            Console.WriteLine("Fin de la partie");
+            Console.WriteLine();
+            Console.WriteLine("Fin de la partie!");
+            Console.WriteLine(joueur1.toString());
+            Console.WriteLine();
+            Console.WriteLine(joueur2.toString());
+            Console.ReadKey();
         }
+        
     }
 }

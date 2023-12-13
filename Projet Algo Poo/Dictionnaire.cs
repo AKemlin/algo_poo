@@ -161,33 +161,7 @@ namespace Projet_Algo_Poo
             }
             return rechercheDichotomiqueRecursif( mot, 0, this.lignes.Count - 1);
         }
-        /*
-        private bool RechercheDichotomique(string mots, string mot, int gauche, int droite)
-        {
-            if (gauche > droite)
-            {
-                return false;
-            }
-            
-            int milieu = gauche + (droite - gauche) / 2;
-            char motssss = Convert.ToChar(mots[milieu]);
-            int resultat = motssss.CompareTo(Convert.ToChar(mot));
-
-            if (resultat == 0)
-            {
-                return true;
-            }
-            else if (resultat < 0)
-            {
-                return RechercheDichotomique(mots, mot, milieu + 1, droite);
-            }
-            else
-            {
-                return RechercheDichotomique(mots, mot, gauche, milieu - 1);
-            }
-        }
-        */
-
+        
         public bool rechercheDichotomiqueRecursif(string mot, int debut, int fin)      //recherche dichotomique en récursif terminale afin de chercher un mot dans le dictionnaire. Exécuter par cette méthode permet de réduire la complexité
         {
             if (this.lignes == null || this.lignes.Count == 0)  //Les deux conditions permettent d'améliorer la complexité
@@ -214,11 +188,11 @@ namespace Projet_Algo_Poo
                 }
                 if (compare1 < 0)
                 {
-                    return rechercheDichotomiqueRecursif(mot, debut, milieu);
+                    return rechercheDichotomiqueRecursif(mot, debut, milieu - 1);
                 }
                 else if (compare1 > 0)
                 {
-                    return rechercheDichotomiqueRecursif(mot, milieu, fin);
+                    return rechercheDichotomiqueRecursif(mot, milieu - 1, fin);
                 }
             }
             return false;

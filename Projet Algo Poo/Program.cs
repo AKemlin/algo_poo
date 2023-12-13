@@ -6,9 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Projet_Algo_Poo
 {
-    class program
-    {
-        
-    }
+    
+    
 }
 

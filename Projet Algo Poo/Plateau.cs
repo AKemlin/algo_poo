@@ -100,7 +100,7 @@ namespace Projet_Algo
         }
 
 
-        public string ToString()  // Retourne une chaine de caractères qui permet d'afficher le plateau
+        public string toString()  // Retourne une chaine de caractères qui permet d'afficher le plateau
         {
             string chainematrice = null;
             for (int i = 0; i < this.Cote; i++)
