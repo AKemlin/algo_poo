@@ -69,14 +69,6 @@ namespace Projet_Algo
                 transition[i] = lignes[i].Split(';');
                 informations[i] = transition[i][0].Split(',');
             }
-            Console.WriteLine(transition[0][0]);
-            Console.WriteLine(transition[1][0]);
-            Console.WriteLine(informations[0][0]);
-            Console.WriteLine(informations[0][1]);
-            Console.WriteLine(informations[0][2]);
-            Console.WriteLine(informations[1][0]);
-            Console.WriteLine(informations[1][1]);
-            Console.WriteLine(informations[1][2]);
 
             for (int i = 0;i < this.Cote; i++)
             {
