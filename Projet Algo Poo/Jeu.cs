@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Projet_Algo_Poo
 {
@@ -22,7 +23,7 @@ namespace Projet_Algo_Poo
             //Joueurs amaury = new Joueurs("Amaury");
             //amaury.Add_Mot("Chaussette");
             //amaury.Add_Score(15);
-            Console.WriteLine("Voulez vous connaitre notre histoire ? (oui/non)");
+            /*Console.WriteLine("Voulez vous connaitre notre histoire ? (oui/non)");
             string answer3 = Console.ReadLine();
             while (answer3 != "oui" && answer3 != "non")
             {
@@ -38,7 +39,7 @@ namespace Projet_Algo_Poo
                 Console.WriteLine("Pendant ce temps, Paul travaillait sur l'interface utilisateur. Il conçut un plateau de jeu clair et agréable à l'œil, avec des animations fluides pour les mouvements des lettres et les événements spéciaux. Il veilla aussi à ce que le jeu soit accessible et facile à comprendre pour les joueurs de tous niveaux.");
                 Console.WriteLine("Après plusieurs semaine de travail acharné, le jeu, qu'ils nommèrent \"AlgoScrabble\", était prêt. Ils le testèrent avec leurs amis et furent ravis de voir que leur création était non seulement amusante, mais aussi éducative. Les joueurs pouvaient améliorer leur vocabulaire tout en apprenant des concepts d'algorithmique.");
                 Console.WriteLine("Le jeu rencontra un succès inattendu dans la communauté des développeurs et des amateurs de jeux de mots. Paul et Amaury parlèrent de leur expérience unique dans la création d'un jeu combinant programmation et divertissement. AlgoScrabble devint un exemple inspirant de la manière dont la passion pour la programmation et le jeu peut mener à des créations innovantes et enrichissantes.");
-            }
+            }*/
             Plateau grille;
             List<string> lignes = new List<string> { };
             Dictionnaire dico = new Dictionnaire(lignes);
@@ -103,16 +104,21 @@ namespace Projet_Algo_Poo
 
                     Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
                     string mot1 = Console.ReadLine();
-                    /*
-                    bool dicto = dico.RechDichoRecursif(mot1);
+                    mot1.ToUpper();
+                    
+                    bool dicto = dico.rechercheDichotomiqueRecursif(mot1, lignes.Count - 1, 0);
                     while (dicto == false)
                     {
+                        Console.WriteLine($"dicto = {dicto}");
                         Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
                         Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
                         mot1 = Console.ReadLine();
-                        dicto = dico.RechDichoRecursif(mot1);
+                        mot1.ToUpper();
+                        
+                        dicto = dico.rechercheDichotomiqueRecursif(mot1, lignes.Count-1, 0);
+                        
                     }
-                    */
+                    
                     (bool presence, grille.Matrice) = grille.Recherche_Mot(mot1);
                     if (presence == true)
                     {
@@ -174,6 +180,7 @@ namespace Projet_Algo_Poo
                 {
                     Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
                     string mot2 = Console.ReadLine();
+                    mot2.ToUpper();
                     /*
                     bool dicto = dico.RechDichoRecursif(mot1);
                     while (dicto == false)

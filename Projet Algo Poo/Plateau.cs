@@ -94,8 +94,6 @@ namespace Projet_Algo
                 }
             }
         }
-
-
         public string ToString()  // Retourne une chaine de caractères qui permet d'afficher le plateau
         {
             string chainematrice = null;
@@ -110,7 +108,6 @@ namespace Projet_Algo
 
             return chainematrice;
         }
-
 
         public (bool,string[][]) Recherche_Mot(string mot)  // recherche si le mot entré est present dans le plateau selon les règles 
         {
@@ -157,7 +154,6 @@ namespace Projet_Algo
 
         public (bool, Stack<int[]>) Recherche(char[] lettres, Stack<int[]> indices, List<int[]> interdits,int comptelettre)
         {
-            
             if (comptelettre >= lettres.Length)
             {
                 return (true,indices);
@@ -193,7 +189,7 @@ namespace Projet_Algo
                 int[] newind = new int[2];
                 newind[0] = ind[0] - 1;
                 newind[1] = ind[1] - 1;
-                indices.Push(newind);
+                indices.Push(newind); 
                 comptelettre++;
                 return Recherche(lettres, indices, interdits, comptelettre);
             }
