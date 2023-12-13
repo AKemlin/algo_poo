@@ -96,7 +96,7 @@ namespace Projet_Algo_Poo
 
             // iteration sur les lettres 
             Console.WriteLine();
-            Console.WriteLine("Voulez vous afficher le nombres de mots par lettres ? (oui/non)");
+            Console.WriteLine("Voulez vous afficher le nombre de mots par lettre ? (oui/non)");
             string answer1 = Console.ReadLine();
             while (answer1 != "oui" && answer1 != "non")
             {

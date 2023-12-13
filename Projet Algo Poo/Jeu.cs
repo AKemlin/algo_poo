@@ -46,13 +46,17 @@ namespace Projet_Algo_Poo
             Console.WriteLine(" ");
             Console.WriteLine("Nom du joueur 1 ? ");
             Joueurs joueur1 = new Joueurs(Console.ReadLine());
+            Console.WriteLine();
             Console.WriteLine("Nom du joueur 2 ? ");
             Joueurs joueur2 = new Joueurs(Console.ReadLine());
-            Console.WriteLine("Combien de temps voulez vous que le tour dure ?");
+            Console.WriteLine();
+            Console.WriteLine("Combien de temps voulez vous que le tour dure ? (en secondes)");
             TimeSpan tempspartour = new TimeSpan(0,0,Convert.ToInt32(Console.ReadLine()));
+            Console.WriteLine();
             Console.WriteLine("Combien de temps voulez vous que dure la partie ?");
             TimeSpan TempsPartie = new TimeSpan(0, 0, Convert.ToInt32(Console.ReadLine()));
-            Console.Write("Comment Construire le plateau ? ");
+            Console.WriteLine();
+            Console.Write("Comment voulez vous construire le plateau ? ");
             Console.WriteLine(" (Entrer le numéro correspondant)");
             Console.WriteLine("1 : Aléatoirement");
             Console.WriteLine("2 : Grâce au fichier .csv");
@@ -77,6 +81,11 @@ namespace Projet_Algo_Poo
                 Console.WriteLine(grille.ToString());
                 Console.WriteLine("Voulez-vous sauvegarder le plateau dans un fichier exterieur ? (oui ou non)");
                 string Save = Console.ReadLine().ToLower();
+                while (Save != "oui" && Save != "non" && Save != null)
+                {
+                    Console.WriteLine("Voulez-vous sauvegarder le plateau dans un fichier exterieur ? (oui ou non)");
+                    Save = Console.ReadLine();
+                }
                 if (Save == "oui")
                 {
                     grille.ToFile(cheminSave);
@@ -117,6 +126,7 @@ namespace Projet_Algo_Poo
                     if (presence == true)
                     {
                         Console.WriteLine("Le mot est dans le plateau");
+                        Console.WriteLine();
                         grille.Maj_Plateau();
                         grille.Maj_Plateau();
                         grille.Maj_Plateau();
