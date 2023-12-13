@@ -105,7 +105,7 @@ namespace Projet_Algo_Poo
                 Console.WriteLine(grille.ToString());
                 Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
                 string mot1 = Console.ReadLine();
-                bool dicto = dico.RechDichoRecursif(mot1);
+                bool dicto = dico.rechercheDichoRecursif(mot1);
                 (bool presence, grille.Matrice) = grille.Recherche_Mot(mot1);
                 if (presence == true)
                 {
