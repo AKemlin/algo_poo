@@ -14,11 +14,13 @@ namespace Projet_Algo
     {
         public string[][] Matrice;
         public int Cote;
-
+        
+        
         public Plateau(string[][] Matrice, int Cote)
         {
             this.Matrice = Matrice;
             this.Cote = Cote;
+            
         }
 
         public void ToFile(string chemin)  // Sauvegarde du plateau sur un fichier externe(Sauvegarde.csv)
