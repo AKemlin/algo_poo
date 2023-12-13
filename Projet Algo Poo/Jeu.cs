@@ -78,7 +78,6 @@ namespace Projet_Algo_Poo
                 {
                     grille.ToFile(cheminSave);
                 }
-
                 Console.WriteLine("entrer un mot");
                 string mottest = Console.ReadLine();
                 (bool presence, grille.Matrice) = grille.Recherche_Mot(mottest);
