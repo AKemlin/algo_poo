@@ -19,6 +19,7 @@ namespace Projet_Algo_Poo
 
         static void Main(string[] args)
         {
+            
             Console.WriteLine("Voulez vous connaitre notre histoire ? (oui/non)");
             string answer3 = Console.ReadLine();
             while (answer3 != "oui" && answer3 != "non")
@@ -35,8 +36,8 @@ namespace Projet_Algo_Poo
                 Console.WriteLine("Pendant ce temps, Paul travaillait sur l'interface utilisateur. Il conçut un plateau de jeu clair et agréable à l'œil, avec des animations fluides pour les mouvements des lettres et les événements spéciaux. Il veilla aussi à ce que le jeu soit accessible et facile à comprendre pour les joueurs de tous niveaux.");
                 Console.WriteLine("Après plusieurs semaine de travail acharné, le jeu, qu'ils nommèrent \"AlgoScrabble\", était prêt. Ils le testèrent avec leurs amis et furent ravis de voir que leur création était non seulement amusante, mais aussi éducative. Les joueurs pouvaient améliorer leur vocabulaire tout en apprenant des concepts d'algorithmique.");
                 Console.WriteLine("Le jeu rencontra un succès inattendu dans la communauté des développeurs et des amateurs de jeux de mots. Paul et Amaury parlèrent de leur expérience unique dans la création d'un jeu combinant programmation et divertissement. AlgoScrabble devint un exemple inspirant de la manière dont la passion pour la programmation et le jeu peut mener à des créations innovantes et enrichissantes.");
-
             }
+           
             List<string> lignes = new List<string> { };
             Dictionnaire dico = new Dictionnaire(lignes);
             dico.tout();
@@ -171,6 +172,7 @@ namespace Projet_Algo_Poo
                         }
                     }
                     Console.WriteLine("Fin du tour");
+
                     DateTime date2 = DateTime.Now;
                     Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
                     string mot2 = Console.ReadLine();
@@ -190,7 +192,6 @@ namespace Projet_Algo_Poo
                     }
                     Console.WriteLine("Fin du tour");
                     /*
-
                     bool vrai1 = joueur1.Contient(mot1);
                     if (vrai1 == false)
                     {
