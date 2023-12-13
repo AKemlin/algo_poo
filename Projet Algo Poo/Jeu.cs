@@ -162,12 +162,12 @@ namespace Projet_Algo_Poo
                         DateTime date1 = DateTime.Now;
                         Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
                         string mot1 = Console.ReadLine();
-                        if (DateTime.Now - date1 < tempspartour)
+                        while (DateTime.Now - date1 < tempspartour)
                         {
                             bool dicto = dico.RechDichoRecursif(mot1);
                             while (dicto == false)
                             {
-                                if (DateTime.Now - date1 < tempspartour)
+                                while (DateTime.Now - date1 < tempspartour)
                                 {
                                     Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
                                     Console.WriteLine(joueur1.AppelationP + " veuillez rentrez votre mot : ");
@@ -176,20 +176,17 @@ namespace Projet_Algo_Poo
                                 }
                             }
                         }
-                        else
-                        {
-                            Console.WriteLine("Fin du tour");
-                        }
+                        Console.WriteLine("Fin du tour");
 
                         DateTime date2 = DateTime.Now;
                         Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
                         string mot2 = Console.ReadLine();
-                        if (DateTime.Now - date2 < tempspartour)
+                        while (DateTime.Now - date2 < tempspartour)
                         {
                             bool dicto = dico.RechDichoRecursif(mot2);
                             while (dicto == false)
                             {
-                                if (DateTime.Now - date2 < tempspartour)
+                                while (DateTime.Now - date2 < tempspartour)
                                 {
                                     Console.WriteLine("Le mot entrer n'est pas dans le dictionnaire ! ");
                                     Console.WriteLine(joueur2.AppelationP + " veuillez rentrez votre mot : ");
@@ -198,10 +195,7 @@ namespace Projet_Algo_Poo
                                 }
                             }
                         }
-                        else
-                        {
-                            Console.WriteLine("Fin du tour");
-                        }
+                        Console.WriteLine("Fin du tour");
                         /*
 
                         bool vrai1 = joueur1.Contient(mot1);
