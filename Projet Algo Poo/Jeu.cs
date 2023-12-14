@@ -110,7 +110,7 @@ namespace Projet_Algo_Poo
             if (MéthodeConstru == "1")
             {
                 string chemin = "../../../Lettre.txt"; // Chemin vers le fichier contenant les lettres
-                Console.WriteLine("Quelle dimension du plateau ?");
+                Console.WriteLine("Quelle dimension du plateau ? (max = 10)");
                 int cote = int.Parse(Console.ReadLine()); // Lecture de la dimension du plateau
                 string[][] matrice = new string[cote][]; // Création d'une matrice pour le plateau
                 grille = new Plateau(matrice, cote); // Initialisation du plateau
