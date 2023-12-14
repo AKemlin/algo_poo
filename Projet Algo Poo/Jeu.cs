@@ -151,6 +151,7 @@ namespace Projet_Algo_Poo
             Console.Clear();
             Console.WriteLine(grille.ToString());
             bool stop = false;
+
             DateTime date3 = DateTime.Now; // Début du timer pour la partie
             while (DateTime.Now - date3 < TempsPartie && stop == false)
             {
@@ -234,6 +235,7 @@ namespace Projet_Algo_Poo
                 Console.WriteLine();
                 grille.Maj_Plateau();
                 Console.WriteLine(grille.ToString());
+
                 DateTime date2 = DateTime.Now; // Début du timer pour le tour du joueur 2
                 while (DateTime.Now - date2 < tempspartour && stop == false) // Boucle pour le tour du joueur 2
                 {
