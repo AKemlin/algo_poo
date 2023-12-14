@@ -1,6 +1,7 @@
 ﻿using Projet_Algo;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -133,6 +134,7 @@ namespace Projet_Algo_Poo
             DateTime date3 = DateTime.Now;
             while (DateTime.Now - date3 < TempsPartie)
             {
+                
                 DateTime date1 = DateTime.Now;
                 while (DateTime.Now - date1 < tempspartour)
                 {
@@ -200,12 +202,14 @@ namespace Projet_Algo_Poo
                     
                     
                 }
+                Console.Clear();
                 Console.WriteLine("Fin du tour de " + joueur1.AppelationP);
+                Console.WriteLine();
+                Console.WriteLine(grille.ToString());
 
 
 
                 DateTime date2 = DateTime.Now;
-                
                 while (DateTime.Now - date2 < tempspartour)
                 {
                     Console.WriteLine(joueur2.AppelationP + " veuillez rentrer votre mot : ");
@@ -216,6 +220,7 @@ namespace Projet_Algo_Poo
                     if (dicto == false)
                     {
                         Console.WriteLine("Le mot entré n'est pas dans le dictionnaire ! ");
+                        Console.WriteLine();
                         break;
                     } 
                     else
@@ -226,6 +231,7 @@ namespace Projet_Algo_Poo
                         if (presence == true)
                         {
                             Console.WriteLine("Le mot est dans le plateau");
+                            Console.WriteLine();
                             grille.Maj_Plateau();
                             Console.WriteLine(grille.ToString());
 
@@ -264,13 +270,17 @@ namespace Projet_Algo_Poo
                         else if (presence == false)
                         {
                             Console.WriteLine("Le mot n'est pas dans le plateau");
+                            Console.WriteLine();
                         }
                     }
                     
                     
                 }
+                Console.Clear();
                 Console.WriteLine("Fin du tour de "+joueur2.AppelationP);
-                
+                Console.WriteLine();
+                Console.WriteLine(grille.ToString());
+
             }
             Console.WriteLine();
             Console.WriteLine("Fin de la partie!");
