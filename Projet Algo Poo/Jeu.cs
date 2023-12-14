@@ -144,6 +144,12 @@ namespace Projet_Algo_Poo
                     Console.WriteLine();
                     string mot1 = Console.ReadLine();
                     Console.WriteLine();
+                    if (DateTime.Now - date1 > tempspartour)
+                    {
+                        Console.WriteLine("Temps écoulé !");
+                        Console.WriteLine();
+                        break;
+                    }
                     bool presence;
                     bool dicto = dico.RechDichoRecursif(mot1);
                     if (dicto == false)
@@ -203,10 +209,10 @@ namespace Projet_Algo_Poo
                     
                     
                 }
-                Console.Clear();
+                
                 Console.WriteLine("Fin du tour de " + joueur1.AppelationP);
                 Console.WriteLine();
-                Console.WriteLine(grille.ToString());
+                
 
 
 
@@ -214,8 +220,15 @@ namespace Projet_Algo_Poo
                 while (DateTime.Now - date2 < tempspartour)
                 {
                     Console.WriteLine(joueur2.AppelationP + " veuillez rentrer votre mot : ");
+                    Console.WriteLine();
                     string mot2 = Console.ReadLine();
-
+                    Console.WriteLine();
+                    if (DateTime.Now - date2 > tempspartour)
+                    {
+                        Console.WriteLine("Temps écoulé !");
+                        Console.WriteLine();
+                        break;
+                    }
                     bool presence;
                     bool dicto = dico.RechDichoRecursif(mot2);
                     if (dicto == false)
@@ -277,10 +290,10 @@ namespace Projet_Algo_Poo
                     
                     
                 }
-                Console.Clear();
+                
                 Console.WriteLine("Fin du tour de "+joueur2.AppelationP);
                 Console.WriteLine();
-                Console.WriteLine(grille.ToString());
+                
 
             }
             Console.WriteLine();
