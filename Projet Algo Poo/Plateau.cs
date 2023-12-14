@@ -362,20 +362,20 @@ namespace Projet_Algo
 
         public void Maj_Plateau()  // Met a jour le plateau pour continuer le jeu.
         {
-            for (int i = 0; i < this.Cote - 1; i++)
+            for (int k = 0; k < 10; k++)
             {
-                for (int j = 0; j < this.Cote - 1; j++)
+                for (int i = 0; i < this.Cote - 1; i++)
                 {
-                    if (this.Matrice[i + 1][j] == " ")
+                    for (int j = 0; j < this.Cote - 1; j++)
                     {
-                        this.Matrice[i + 1][j] = this.Matrice[i][j];
-                        this.Matrice[i][j] = " ";
+                        if (this.Matrice[i + 1][j] == " ")
+                        {
+                            this.Matrice[i + 1][j] = this.Matrice[i][j];
+                            this.Matrice[i][j] = " ";
+                        }
                     }
-                    
-                    
                 }
             }
-            
         }
     }
 }
