@@ -168,7 +168,6 @@ namespace Projet_Algo
             {
                 int[] transiinterdits = indices.Pop();
                 interdits.Add(transiinterdits);
-                comptelettre--;
                 return Recherche(lettres, indices, interdits, comptelettre);
             }
 
