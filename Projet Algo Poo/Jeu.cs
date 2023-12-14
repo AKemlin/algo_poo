@@ -210,7 +210,8 @@ namespace Projet_Algo_Poo
                 
                 Console.WriteLine("Fin du tour de " + joueur1.AppelationP);
                 Console.WriteLine();
-                
+                grille.Maj_Plateau();
+                Console.WriteLine(grille.ToString());
 
 
 
@@ -293,7 +294,8 @@ namespace Projet_Algo_Poo
                 
                 Console.WriteLine("Fin du tour de "+joueur2.AppelationP);
                 Console.WriteLine();
-                
+                grille.Maj_Plateau();
+                Console.WriteLine(grille.ToString());
 
             }
             Console.WriteLine();
