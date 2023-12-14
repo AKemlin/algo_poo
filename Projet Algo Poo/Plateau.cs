@@ -43,10 +43,12 @@ namespace Projet_Algo_Poo
                     }
                 }
                 Console.WriteLine("Plateau Sauvegardé");
+                Console.WriteLine();
             }
             catch (Exception e)
             {
                 Console.WriteLine("Le plateau n'a pas pu être sauvegardé");
+                Console.WriteLine();
             }
             
         }

@@ -61,7 +61,7 @@ namespace Projet_Algo_Poo
 
         public string toString()
         {
-            string a ="Le Score est de : " + this.Score + "\nLe tableau des mots trouvés est : ";
+            string a =":\nScore : " + this.Score + "\nMots trouvés : ";
             for (int i = 0; i < this.MotsT.Count; i++)
             {
                 a += "\n-" + this.MotsT[i];
@@ -71,17 +71,16 @@ namespace Projet_Algo_Poo
 
         public void AffichePrenom1()
         {
-            Console.Write("Le Prénom est : ");
+            
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(this.Prenom);
+            Console.Write(this.Prenom);
             Console.ForegroundColor = ConsoleColor.White;
         }
 
         public void AffichePrenom2()
         {
-            Console.Write("Le Prénom est : ");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(this.Prenom);
+            Console.Write(this.Prenom);
             Console.ForegroundColor = ConsoleColor.White;
         }
         public void Add_Score(int val) // Ajoute le score du mot au score total du joueur
@@ -89,11 +88,19 @@ namespace Projet_Algo_Poo
             this.Score += val; //penser a definir val qui seras la valeur de chaque MotsT donc les mots trouvees par le joueur
         }
 
-        public void Vainqueur(Joueurs joueur1,Joueurs joueurs2)
+        public void Vainqueur(Joueurs joueur2)
         {
-            if (joueur1.score > joueurs2.score)
+            if (this.score > joueur2.score)
             {
-                Console.WriteLine(joueur1.AffichePrenom);
+                this.AffichePrenom1();
+            }
+            else if (this.score < joueur2.score)
+            {
+                joueur2.AffichePrenom2();
+            }
+            else if (this.score < joueur2.score)
+            {
+                Console.WriteLine("Egalité !");
             }
         }
     }

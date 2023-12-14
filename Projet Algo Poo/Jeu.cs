@@ -17,6 +17,12 @@ namespace Projet_Algo_Poo
         }*/
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Bienvenue sur le jeu de mots glissés de Paul et Amaury !");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+            Console.WriteLine();
+
             //Joueurs amaury = new Joueurs("Amaury");
             //amaury.Add_Mot("Chaussette");
             //amaury.Add_Score(15);
@@ -41,7 +47,10 @@ namespace Projet_Algo_Poo
             string[][] lignes = new string[26][];
             Dictionnaire dico = new Dictionnaire(lignes);
             dico.LectureDico();
-            dico.TRI();
+            for (int i = 0; i < 26; i++)
+            {
+                dico.QuickSort(lignes[i], 0, lignes[i].Length-1);
+            }
             Console.WriteLine();
             Console.WriteLine("Voulez vous afficher le dictionnaire ? (oui/non)");
             string answer2 = Console.ReadLine();
@@ -147,13 +156,13 @@ namespace Projet_Algo_Poo
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write(joueur1.AppelationP );
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine(" veuillez rentrer votre mot : ");
+                    Console.WriteLine(" A toi de jouer : ");
                     Console.WriteLine();
                     string mot1 = Console.ReadLine();
                     Console.WriteLine();
                     if (DateTime.Now - date1 > tempspartour)
                     {
-                        Console.WriteLine("Temps écoulé !");
+                        Console.WriteLine("Temps du tour écoulé !");
                         Console.WriteLine();
                         break;
                     }
@@ -237,13 +246,13 @@ namespace Projet_Algo_Poo
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write(joueur2.AppelationP);
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine(" veuillez rentrer votre mot : ");
+                    Console.WriteLine(" A toi de jouer : ");
                     Console.WriteLine();
                     string mot2 = Console.ReadLine();
                     Console.WriteLine();
                     if (DateTime.Now - date2 > tempspartour)
                     {
-                        Console.WriteLine("Temps écoulé !");
+                        Console.WriteLine("Temps du tour écoulé !");
                         Console.WriteLine();
                         break;
                     }
@@ -320,19 +329,27 @@ namespace Projet_Algo_Poo
                 Console.WriteLine();
 
             }
+            
+            Console.WriteLine("Fin de la partie ! (temps de la partie écoulé)");
+            Console.WriteLine();
+            Console.WriteLine("Appuyez sur une touche pour afficher les résultats");
             Console.ReadKey();
             Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine("Fin de la partie!");
             Console.WriteLine();
             Console.WriteLine("Récap de la partie :");
             Console.WriteLine();
             Console.Write("Vainqueur : ");
-            joueur1.AffichePrenom();
+            joueur1.Vainqueur(joueur2);
+            Console.WriteLine();
+            Console.WriteLine();
+            joueur1.AffichePrenom1();
             Console.WriteLine(joueur1.toString());
             Console.WriteLine();
-            joueur1.AffichePrenom();
+            joueur2.AffichePrenom2();
             Console.WriteLine(joueur2.toString());
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Appuyez sur une touche pour fermer");
             Console.ReadKey();
         }
     }

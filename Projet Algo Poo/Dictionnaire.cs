@@ -71,29 +71,43 @@ namespace Projet_Algo_Poo
                 Console.WriteLine();
             }
         }
-        // Implémentation du TRI
-        public void TRI()
+        
+        
+        // Tri les mots dans l'ordre alphabétique
+        public void QuickSort(string[] tab, int debut, int fin)
         {
-            for (int k = 0; k < this.lignes.Length; k++)
+            int i = debut;
+            int j = fin;
+            string Tampon1 = tab[(debut + fin) / 2];
+            while (i <= j)
             {
-                for (int i = 0; i < this.lignes[k].Length - 1; i++)
+                while (tab[i].CompareTo(Tampon1) < 0)
                 {
-                    for (int j = 0; j < this.lignes[k].Length - i - 1; j++)
-                    {
-
-                        if (this.lignes[k][j].CompareTo(this.lignes[k][j + 1]) > 0)
-                        {
-                            string tempon = this.lignes[k][j];
-                            this.lignes[k][j] = this.lignes[k][j + 1];
-                            this.lignes[k][j + 1] = tempon;
-                        }
-                    }
+                    i++;
+                }
+                while (tab[j].CompareTo(Tampon1) > 0)
+                {
+                    j--;
+                }
+                if (i <= j)
+                {
+                    // Échanger
+                    string Tampon2 = tab[i];
+                    tab[i] = tab[j];
+                    tab[j] = Tampon2;
+                    i++;
+                    j--;
                 }
             }
-            
+            // Appels récursifs
+            if (debut < j)
+                QuickSort(tab, debut, j);
+            if (i < fin)
+                QuickSort(tab, i, fin);
         }
+
         // Recherche dichotomique
-        
+
         public bool RechDichoRecursif(string mot)
         {
             
