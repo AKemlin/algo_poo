@@ -23,6 +23,7 @@ namespace Projet_Algo_Poo
             //Joueurs amaury = new Joueurs("Amaury");
             //amaury.Add_Mot("Chaussette");
             //amaury.Add_Score(15);
+
             Console.WriteLine("Voulez vous connaitre notre histoire ? (oui/non)");
             string answer1 = Console.ReadLine();
             while (answer1 != "oui" && answer1 != "non" && answer1 != null)
