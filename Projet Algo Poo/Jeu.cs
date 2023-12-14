@@ -23,7 +23,6 @@ namespace Projet_Algo_Poo
             //Joueurs amaury = new Joueurs("Amaury");
             //amaury.Add_Mot("Chaussette");
             //amaury.Add_Score(15);
-
             Console.WriteLine("Voulez vous connaitre notre histoire ? (oui/non)");
             string answer1 = Console.ReadLine();
             while (answer1 != "oui" && answer1 != "non" && answer1 != null)
@@ -83,7 +82,7 @@ namespace Projet_Algo_Poo
             Console.WriteLine("Combien de temps voulez vous que le tour dure ? (en secondes)");
             TimeSpan tempspartour = new TimeSpan(0,0,Convert.ToInt32(Console.ReadLine()));
             Console.WriteLine();
-            Console.WriteLine("Combien de temps voulez vous que dure la partie ?");
+            Console.WriteLine("Combien de temps voulez vous que dure la partie ? (en secondes)");
             TimeSpan TempsPartie = new TimeSpan(0, 0, Convert.ToInt32(Console.ReadLine()));
             Console.WriteLine();
             Console.Write("Comment voulez vous construire le plateau ? ");
@@ -132,15 +131,6 @@ namespace Projet_Algo_Poo
                 Console.WriteLine(grille.ToString());
             }
 
-            for(int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 20; j++)
-                {
-                    Console.WriteLine(dico.lignes[i][j]);
-                }
-            }
-
-
             DateTime date3 = DateTime.Now;
             while (DateTime.Now - date3 < TempsPartie)
             {
@@ -149,13 +139,15 @@ namespace Projet_Algo_Poo
                 {
 
                     Console.WriteLine(joueur1.AppelationP + " veuillez rentrer votre mot : ");
+                    Console.WriteLine();
                     string mot1 = Console.ReadLine();
+                    Console.WriteLine();
                     bool presence;
                     bool dicto = dico.RechDichoRecursif(mot1);
                     if (dicto == false)
                     {
                         Console.WriteLine("Le mot entré n'est pas dans le dictionnaire ! ");
-                        presence = false;
+                        break;
                     }
                     else
                     {
@@ -219,62 +211,64 @@ namespace Projet_Algo_Poo
                 {
                     Console.WriteLine(joueur2.AppelationP + " veuillez rentrer votre mot : ");
                     string mot2 = Console.ReadLine();
-                    
-                    bool dicto = dico.RechDichoRecursif(mot2);
+
                     bool presence;
-                    while (dicto == false)
+                    bool dicto = dico.RechDichoRecursif(mot2);
+                    if (dicto == false)
                     {
                         Console.WriteLine("Le mot entré n'est pas dans le dictionnaire ! ");
-                        Console.WriteLine(joueur1.AppelationP + " veuillez rentrer votre mot : ");
-                        mot2 = Console.ReadLine();
-                        dicto = dico.RechDichoRecursif(mot2);
-                        presence = false;
                         break;
-                    }
-                    Console.WriteLine("Le mot entré est dans le dictionnaire");
-
-                    (presence, grille.Matrice) = grille.Recherche_Mot(mot2);
-                    if (presence == true)
+                    } 
+                    else
                     {
-                        Console.WriteLine("Le mot est dans le plateau");
-                        grille.Maj_Plateau();
-                        Console.WriteLine(grille.ToString());
-
-                        // lire fichier lettre.txt et ajouter le score du mot au joueur
-                        string cheminscore = "../../../Lettre.txt";
-                        string[] ligneslettres = File.ReadAllLines(cheminscore);
-                        string[][] transition = new string[ligneslettres.Length][];
-                        string[][] informations = new string[ligneslettres.Length][];
-
-                        for (int i = 0; i < ligneslettres.Length; i++)
+                        Console.WriteLine("Le mot entré est dans le dictionnaire");
+                        Console.WriteLine();
+                        (presence, grille.Matrice) = grille.Recherche_Mot(mot2);
+                        if (presence == true)
                         {
-                            transition[i] = ligneslettres[i].Split(';');
-                            informations[i] = transition[i][0].Split(',');
+                            Console.WriteLine("Le mot est dans le plateau");
+                            grille.Maj_Plateau();
+                            Console.WriteLine(grille.ToString());
+
+                            // lire fichier lettre.txt et ajouter le score du mot au joueur
+                            string cheminscore = "../../../Lettre.txt";
+                            string[] ligneslettres = File.ReadAllLines(cheminscore);
+                            string[][] transition = new string[ligneslettres.Length][];
+                            string[][] informations = new string[ligneslettres.Length][];
+
+                            for (int i = 0; i < ligneslettres.Length; i++)
+                            {
+                                transition[i] = ligneslettres[i].Split(';');
+                                informations[i] = transition[i][0].Split(',');
+                            }
+
+                            string motmaj = mot2.ToUpper();
+                            char[] lettres = motmaj.ToCharArray();
+                            int score = 0;
+
+                            for (int i = 0; i < lettres.Length; i++)
+                            {
+                                int ligneinfo = lettres[i] - 'A';
+                                score += Convert.ToInt32(informations[ligneinfo][2]);
+                            }
+
+                            bool vrai2 = joueur2.Contient(mot2);
+
+                            if (vrai2 == false)
+                            {
+                                joueur2.Add_Mot(mot2);
+                                joueur2.Add_Score(score);
+                            }
+                            break;
                         }
 
-                        string motmaj = mot2.ToUpper();
-                        char[] lettres = motmaj.ToCharArray();
-                        int score = 0;
-
-                        for (int i = 0; i < lettres.Length; i++)
+                        else if (presence == false)
                         {
-                            int ligneinfo = lettres[i] - 'A';
-                            score += Convert.ToInt32(informations[ligneinfo][2]);
+                            Console.WriteLine("Le mot n'est pas dans le plateau");
                         }
-
-                        bool vrai2 = joueur2.Contient(mot2);
-
-                        if (vrai2 == false)
-                        {
-                            joueur2.Add_Mot(mot2);
-                            joueur2.Add_Score(score);
-                        }
-                        break;
                     }
-                    else if (presence == false)
-                    {
-                        Console.WriteLine("Le mot n'est pas dans le plateau");
-                    }
+                    
+                    
                 }
                 Console.WriteLine("Fin du tour de "+joueur2.AppelationP);
             }

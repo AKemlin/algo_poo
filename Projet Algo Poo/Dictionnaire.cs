@@ -109,8 +109,6 @@ namespace Projet_Algo_Poo
             {
                 return false;
             }
-            Console.WriteLine(indexLigne);
-            Console.WriteLine(this.lignes[indexLigne][0]);
             return rechercheDichotomiqueRecursif(this.lignes[indexLigne], mot, 0, this.lignes[indexLigne].Length - 1);
         }
 
