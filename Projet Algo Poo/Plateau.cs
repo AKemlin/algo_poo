@@ -155,7 +155,7 @@ namespace Projet_Algo
 
         }
 
-        public (bool, Stack<int[]>) Recherche(char[] lettres, Stack<int[]> indices, List<int[]> interdits,int comptelettre)
+        public (bool, Stack<int[]>) Recherche(char[] lettres, Stack<int[]> indices, List<int[]> interdits,int comptelettre) // Recherche
         {
             
             if (comptelettre >= lettres.Length)

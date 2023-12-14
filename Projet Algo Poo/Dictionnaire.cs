@@ -25,7 +25,7 @@ namespace Projet_Algo_Poo
             }
         }
 
-        public void AfficheNbMots()
+        public void AfficheNbMots() // Affiche nombre de mots par lettre
         {
             Dictionary<char, int> NombreDeMots = new Dictionary<char, int>();
             for (int i = 0; i < this.lignes.Length; i++)
@@ -60,7 +60,7 @@ namespace Projet_Algo_Poo
             }
         }
 
-        public void AfficheDico()
+        public void AfficheDico() // Affiche le dictionnaire
         {
             for (int i = 0 ; i < this.lignes.Length ; i++)
             {

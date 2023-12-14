@@ -62,7 +62,7 @@ namespace Projet_Algo_Poo
             }
             return a;
         }
-        public void Add_Score(int val)
+        public void Add_Score(int val) // Ajoute le score du mot au score total du joueur
         {
             this.Score += val; //penser a definir val qui seras la valeur de chaque MotsT donc les mots trouvees par le joueur
         }

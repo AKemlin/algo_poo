@@ -131,7 +131,7 @@ namespace Projet_Algo_Poo
                 Console.WriteLine(grille.ToString());
             }
 
-            DateTime date3 = DateTime.Now;
+            DateTime date3 = DateTime.Now;  // debut timer
             while (DateTime.Now - date3 < TempsPartie)
             {
                 
