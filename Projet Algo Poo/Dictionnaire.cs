@@ -105,7 +105,7 @@ namespace Projet_Algo_Poo
             int indexLigne = mot[0] - 'A'; // Calcule l'index basé sur la première lettre du mot
             if (indexLigne < 0 || indexLigne >= this.lignes.Length)
             {
-                return false; // Retourne faux si l'index est hors des limites
+                return false;
             }
             return rechercheDichotomiqueRecursif(this.lignes[indexLigne], mot, 0, this.lignes[indexLigne].Length - 1);
         }

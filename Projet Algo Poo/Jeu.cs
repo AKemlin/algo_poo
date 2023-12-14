@@ -44,7 +44,7 @@ namespace Projet_Algo_Poo
             string[][] lignes = new string[26][]; // Tableau pour les lignes du dictionnaire
             Dictionnaire dico = new Dictionnaire(lignes); // Création d'un dictionnaire
             dico.LectureDico(); // Lecture et chargement du dictionnaire
-            // Tri alphabétique de chaque ligne du dictionnaire
+            // Tri par ordre alphabétique de chaque ligne du dictionnaire
             for (int i = 0; i < 26; i++)
             {
                 dico.QuickSort(lignes[i], 0, lignes[i].Length - 1);
@@ -151,7 +151,6 @@ namespace Projet_Algo_Poo
             Console.Clear();
             Console.WriteLine(grille.ToString());
             DateTime date3 = DateTime.Now; // Début du timer pour la partie
-            // Boucle principale du jeu
             while (DateTime.Now - date3 < TempsPartie)
             {
                 DateTime date1 = DateTime.Now; // Début du timer pour le tour
