@@ -7,6 +7,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
 using System.Security.Cryptography;
+using Projet_Algo_Poo;
 
 namespace Projet_Algo
 {

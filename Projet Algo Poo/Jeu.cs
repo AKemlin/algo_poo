@@ -1,4 +1,4 @@
-﻿using Projet_Algo;
+﻿using Projet_Algo_Poo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -227,7 +227,7 @@ namespace Projet_Algo_Poo
                     if (presence == true)
                     }
                     else
-                {
+                    {
                     Console.WriteLine("Le mot est dans le plateau");
                     grille.Maj_Plateau();
                     Console.WriteLine(grille.ToString());
