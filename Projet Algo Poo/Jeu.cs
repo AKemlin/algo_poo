@@ -14,6 +14,7 @@ namespace Projet_Algo_Poo
         static void Main(string[] args)
         {
             // Définition de la couleur du texte dans la console
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Bienvenue sur le jeu de mots glissés de Paul et Amaury !");
             Console.ForegroundColor = ConsoleColor.White;
@@ -30,7 +31,13 @@ namespace Projet_Algo_Poo
             // Affichage de l'histoire si l'utilisateur répond "oui"
             if (answer1 == "oui")
             {
-                // [Insérez ici l'histoire de Paul et Amaury, déjà fournie]
+                Console.WriteLine("Il était une fois deux amis passionnés de programmation, Paul et Amaury. Ils partageaient un amour particulier pour les jeux de mots et les défis algorithmiques. Un jour, en jouant au Scrabble, une idée leur vint : créer un jeu similaire, mais qui serait informatisé et aurait ses propres règles uniques.");
+                Console.WriteLine("Paul, expert en logique et structuration de données, prit en charge le développement du cœur du jeu en C#. Amaury, avec son esprit créatif et sa compréhension approfondie des algorithmes, proposa des idées innovantes pour rendre le jeu plus stimulant et engageant. Ils commencèrent par définir les règles de leur jeu. ");
+                Console.WriteLine("Tout comme le Scrabble, il s'agirait de former des mots sur un plateau de jeu, mais avec des twists algorithmiques. Par exemple, certains mots déclencheraient des événements spéciaux ou rapporteraient des points bonus selon leur complexité algorithmique.");
+                Console.WriteLine("Ensuite, Amaury se concentra sur la programmation des fonctionnalités de base. Il utilisa des structures de données complexes pour gérer le dictionnaire des mots et vérifier la validité des mots formés. Il implémenta également un système de points sophistiqué qui récompenserait les joueurs pour l'utilisation de concepts algorithmiques avancés.");
+                Console.WriteLine("Pendant ce temps, Paul travaillait sur l'interface utilisateur. Il conçut un plateau de jeu clair et agréable à l'œil, avec des animations fluides pour les mouvements des lettres et les événements spéciaux. Il veilla aussi à ce que le jeu soit accessible et facile à comprendre pour les joueurs de tous niveaux.");
+                Console.WriteLine("Après plusieurs semaine de travail acharné, le jeu, qu'ils nommèrent \"AlgoScrabble\", était prêt. Ils le testèrent avec leurs amis et furent ravis de voir que leur création était non seulement amusante, mais aussi éducative. Les joueurs pouvaient améliorer leur vocabulaire tout en apprenant des concepts d'algorithmique.");
+                Console.WriteLine("Le jeu rencontra un succès inattendu dans la communauté des développeurs et des amateurs de jeux de mots. Paul et Amaury parlèrent de leur expérience unique dans la création d'un jeu combinant programmation et divertissement. AlgoScrabble devint un exemple inspirant de la manière dont la passion pour la programmation et le jeu peut mener à des créations innovantes et enrichissantes.");
             }
             // Initialisation des composants du jeu
             Plateau grille;
