@@ -25,7 +25,8 @@ namespace Projet_Algo_Poo
                 this.lignes[i] = lignesdico[i].Split(' ');
             }
         }
-        public void AfficheNbMots()
+
+        public void AfficheNbMots() // Affiche nombre de mots par lettre
         {
             Dictionary<char, int> NombreDeMots = new Dictionary<char, int>();
             for (int i = 0; i < this.lignes.Length; i++)
@@ -59,7 +60,8 @@ namespace Projet_Algo_Poo
                 Console.Write("\n");
             }
         }
-        public void AfficheDico()
+
+        public void AfficheDico() // Affiche le dictionnaire
         {
             for (int i = 0; i < this.lignes.Length; i++)
             {
@@ -89,13 +91,13 @@ namespace Projet_Algo_Poo
                     }
                 }
             }
-
+            
         }
         // Recherche dichotomique
-
+        
         public bool RechDichoRecursif(string mot)
         {
-
+            
             if (mot == null || mot.Length == 0)
             {
                 return false;
@@ -106,8 +108,6 @@ namespace Projet_Algo_Poo
             {
                 return false;
             }
-            Console.WriteLine(indexLigne);
-            Console.WriteLine(this.lignes[indexLigne][0]);
             return rechercheDichotomiqueRecursif(this.lignes[indexLigne], mot, 0, this.lignes[indexLigne].Length - 1);
         }
 
@@ -117,12 +117,15 @@ namespace Projet_Algo_Poo
             {
                 return false;
             }
+
             if (debut > fin)
             {
                 return false;
             }
             int milieu = (debut + fin) / 2;
+
             int compare1 = mot.CompareTo(mots[milieu]);  //Fonction compare pour comparer les mots.
+
             if (compare1 == 0)
             {
                 return true;
@@ -135,6 +138,7 @@ namespace Projet_Algo_Poo
             {
                 return rechercheDichotomiqueRecursif(mots, mot, milieu + 1, fin);
             }
+
             return false;
         }
     }
