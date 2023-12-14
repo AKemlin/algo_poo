@@ -363,7 +363,7 @@ namespace Projet_Algo_Poo
             {
                 for (int i = 0; i < this.Cote - 1; i++)
                 {
-                    for (int j = 0; j < this.Cote - 1; j++)
+                    for (int j = 0; j < this.Cote; j++)
                     {
                         if (this.Matrice[i + 1][j] == " ")
                         {
