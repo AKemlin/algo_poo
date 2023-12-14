@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Diagnostics;
 using System.Security.Cryptography;
 
-namespace Projet_Algo
+namespace Projet_Algo_Poo
 {
     public class Plateau
     {

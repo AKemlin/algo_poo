@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 
 namespace Projet_Algo_Poo
 {
@@ -19,7 +18,7 @@ namespace Projet_Algo_Poo
         {
             string CheminFichier = "..//..//..//Mots_Français.txt";
             string[] lignesdico = File.ReadAllLines(CheminFichier);
-            
+
             for (int i = 0; i < lignesdico.Length; i++)
             {
                 this.lignes[i] = lignesdico[i].Split(' ');
@@ -63,26 +62,25 @@ namespace Projet_Algo_Poo
 
         public void AfficheDico() // Affiche le dictionnaire
         {
-            for (int i = 0 ; i < this.lignes.Length ; i++)
+            for (int i = 0; i < this.lignes.Length; i++)
             {
-                for (int j = 0 ;j < this.lignes[i].Length ; j++)
+                for (int j = 0; j < this.lignes[i].Length; j++)
                 {
                     Console.Write(this.lignes[i][j] + " ");
                 }
                 Console.WriteLine();
             }
         }
-
         // Implémentation du TRI
         public void TRI()
         {
-            for (int k  = 0; k < this.lignes.Length; k++)
+            for (int k = 0; k < this.lignes.Length; k++)
             {
                 for (int i = 0; i < this.lignes[k].Length - 1; i++)
                 {
                     for (int j = 0; j < this.lignes[k].Length - i - 1; j++)
                     {
-                        
+
                         if (this.lignes[k][j].CompareTo(this.lignes[k][j + 1]) > 0)
                         {
                             string tempon = this.lignes[k][j];
@@ -144,6 +142,3 @@ namespace Projet_Algo_Poo
         }
     }
 }
-
-
-
