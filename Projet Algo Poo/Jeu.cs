@@ -211,6 +211,9 @@ namespace Projet_Algo_Poo
                             {
                                 joueur1.Add_Mot(mot1); // Ajoute le mot trouvé
                                 joueur1.Add_Score(score); // Ajoute le score correspondant
+                                Console.Write("Score de ");
+                                joueur1.AffichePrenom1();
+                                Console.WriteLine(" : " +joueur1.score);
                             }
                             break;
                         }
@@ -287,6 +290,10 @@ namespace Projet_Algo_Poo
                             {
                                 joueur2.Add_Mot(mot2); // Ajoute le mot à la liste des mots trouvés du joueur
                                 joueur2.Add_Score(score); // Ajoute le score du mot au score total du joueur
+                                Console.Write("Score de ");
+                                joueur2.AffichePrenom2();
+                                Console.WriteLine(" : " + joueur2.score);
+                                
                             }
                             break; // Termine le tour du joueur
                         }
