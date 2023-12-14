@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Projet_Algo_Poo
 {
@@ -95,7 +96,7 @@ namespace Projet_Algo_Poo
         }
         // Recherche dichotomique
         
-        public bool RechDichoRecursif(string mot)
+        /*public bool RechDichoRecursif(string mot, int fin, int début)
         {
             
             if (mot == null || mot.Length == 0)
