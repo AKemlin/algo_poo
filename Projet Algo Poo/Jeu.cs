@@ -67,10 +67,19 @@ namespace Projet_Algo_Poo
                 dico.AfficheNbMots();
             }
             Console.WriteLine(" ");
-            Console.WriteLine("Nom du joueur 1 ? ");
+
+            Console.Write("Nom du ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("joueur 1");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" ?");
             Joueurs joueur1 = new Joueurs(Console.ReadLine());
             Console.WriteLine();
-            Console.WriteLine("Nom du joueur 2 ? ");
+            Console.Write("Nom du ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("joueur 2");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" ?");
             Joueurs joueur2 = new Joueurs(Console.ReadLine());
             Console.WriteLine();
             Console.WriteLine("Combien de temps voulez vous que le tour dure ? (en secondes)");
@@ -124,6 +133,7 @@ namespace Projet_Algo_Poo
                 grille.ToRead(chemin);
                 Console.WriteLine(grille.ToString());
             }
+            Console.WriteLine("Appuyez sur une touche pour commencer");
             Console.ReadKey();
             Console.Clear();
             Console.WriteLine(grille.ToString());
@@ -134,8 +144,10 @@ namespace Projet_Algo_Poo
                 DateTime date1 = DateTime.Now;
                 while (DateTime.Now - date1 < tempspartour)
                 {
-
-                    Console.WriteLine(joueur1.AppelationP + " veuillez rentrer votre mot : ");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write(joueur1.AppelationP );
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine(" veuillez rentrer votre mot : ");
                     Console.WriteLine();
                     string mot1 = Console.ReadLine();
                     Console.WriteLine();
@@ -167,7 +179,6 @@ namespace Projet_Algo_Poo
                             Console.WriteLine("Le mot est dans le plateau");
                             Console.WriteLine();
                             grille.Maj_Plateau();
-                            Console.WriteLine(grille.ToString());
 
                             // lire fichier lettre.txt et ajouter le score du mot au joueur
                             string cheminscore = "../../../Lettre.txt";
@@ -209,8 +220,11 @@ namespace Projet_Algo_Poo
                     
                     
                 }
-                
-                Console.WriteLine("Fin du tour de " + joueur1.AppelationP);
+
+                Console.Write("Fin du tour de ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(joueur1.AppelationP);
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
                 grille.Maj_Plateau();
                 Console.WriteLine(grille.ToString());
@@ -220,7 +234,10 @@ namespace Projet_Algo_Poo
                 DateTime date2 = DateTime.Now;
                 while (DateTime.Now - date2 < tempspartour)
                 {
-                    Console.WriteLine(joueur2.AppelationP + " veuillez rentrer votre mot : ");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(joueur2.AppelationP);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine(" veuillez rentrer votre mot : ");
                     Console.WriteLine();
                     string mot2 = Console.ReadLine();
                     Console.WriteLine();
@@ -252,7 +269,6 @@ namespace Projet_Algo_Poo
                             Console.WriteLine("Le mot est dans le plateau");
                             Console.WriteLine();
                             grille.Maj_Plateau();
-                            Console.WriteLine(grille.ToString());
 
                             // lire fichier lettre.txt et ajouter le score du mot au joueur
                             string cheminscore = "../../../Lettre.txt";
@@ -293,11 +309,15 @@ namespace Projet_Algo_Poo
                         }
                     }
                 }
-                
-                Console.WriteLine("Fin du tour de "+joueur2.AppelationP);
+
+                Console.Write("Fin du tour de ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(joueur2.AppelationP);
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
                 grille.Maj_Plateau();
                 Console.WriteLine(grille.ToString());
+                Console.WriteLine();
 
             }
             Console.ReadKey();
@@ -307,8 +327,11 @@ namespace Projet_Algo_Poo
             Console.WriteLine();
             Console.WriteLine("Récap de la partie :");
             Console.WriteLine();
+            Console.Write("Vainqueur : ");
+            joueur1.AffichePrenom();
             Console.WriteLine(joueur1.toString());
             Console.WriteLine();
+            joueur1.AffichePrenom();
             Console.WriteLine(joueur2.toString());
             Console.ReadKey();
         }

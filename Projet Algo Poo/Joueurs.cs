@@ -30,7 +30,13 @@ namespace Projet_Algo_Poo
             get { return this.MotsT; }
             set { this.MotsT = value; }
         }
-        
+
+        public int score
+        {
+            get { return Score; }
+            set { this.Score = value; }
+        }
+
         public void Add_Mot(string mot)
         {
             // Ajoute le mot à la liste s'il n'est pas déjà présent
@@ -55,16 +61,40 @@ namespace Projet_Algo_Poo
 
         public string toString()
         {
-            string a = "Le Prénom est : " + this.Prenom + "\nLe Score est de : " + this.Score + "\nLe tableau des mots trouvés est : ";
+            string a ="Le Score est de : " + this.Score + "\nLe tableau des mots trouvés est : ";
             for (int i = 0; i < this.MotsT.Count; i++)
             {
                 a += "\n-" + this.MotsT[i];
             }
             return a;
         }
+
+        public void AffichePrenom1()
+        {
+            Console.Write("Le Prénom est : ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(this.Prenom);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public void AffichePrenom2()
+        {
+            Console.Write("Le Prénom est : ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(this.Prenom);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
         public void Add_Score(int val) // Ajoute le score du mot au score total du joueur
         {
             this.Score += val; //penser a definir val qui seras la valeur de chaque MotsT donc les mots trouvees par le joueur
+        }
+
+        public void Vainqueur(Joueurs joueur1,Joueurs joueurs2)
+        {
+            if (joueur1.score > joueurs2.score)
+            {
+                Console.WriteLine(joueur1.AffichePrenom);
+            }
         }
     }
 }
