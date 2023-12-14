@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 
 namespace Projet_Algo_Poo
 {
@@ -19,13 +18,12 @@ namespace Projet_Algo_Poo
         {
             string CheminFichier = "..//..//..//Mots_Français.txt";
             string[] lignesdico = File.ReadAllLines(CheminFichier);
-            
+
             for (int i = 0; i < lignesdico.Length; i++)
             {
                 this.lignes[i] = lignesdico[i].Split(' ');
             }
         }
-
         public void AfficheNbMots()
         {
             Dictionary<char, int> NombreDeMots = new Dictionary<char, int>();
@@ -60,29 +58,27 @@ namespace Projet_Algo_Poo
                 Console.Write("\n");
             }
         }
-
         public void AfficheDico()
         {
-            for (int i = 0 ; i < this.lignes.Length ; i++)
+            for (int i = 0; i < this.lignes.Length; i++)
             {
-                for (int j = 0 ;j < this.lignes[i].Length ; j++)
+                for (int j = 0; j < this.lignes[i].Length; j++)
                 {
                     Console.Write(this.lignes[i][j] + " ");
                 }
                 Console.WriteLine();
             }
         }
-
         // Implémentation du TRI
         public void TRI()
         {
-            for (int k  = 0; k < this.lignes.Length; k++)
+            for (int k = 0; k < this.lignes.Length; k++)
             {
                 for (int i = 0; i < this.lignes[k].Length - 1; i++)
                 {
                     for (int j = 0; j < this.lignes[k].Length - i - 1; j++)
                     {
-                        
+
                         if (this.lignes[k][j].CompareTo(this.lignes[k][j + 1]) > 0)
                         {
                             string tempon = this.lignes[k][j];
@@ -92,13 +88,13 @@ namespace Projet_Algo_Poo
                     }
                 }
             }
-            
+
         }
         // Recherche dichotomique
-        
-        /*public bool RechDichoRecursif(string mot, int fin, int début)
+
+        public bool RechDichoRecursif(string mot)
         {
-            
+
             if (mot == null || mot.Length == 0)
             {
                 return false;
@@ -109,6 +105,8 @@ namespace Projet_Algo_Poo
             {
                 return false;
             }
+            Console.WriteLine(indexLigne);
+            Console.WriteLine(this.lignes[indexLigne][0]);
             return rechercheDichotomiqueRecursif(this.lignes[indexLigne], mot, 0, this.lignes[indexLigne].Length - 1);
         }
 
@@ -118,15 +116,12 @@ namespace Projet_Algo_Poo
             {
                 return false;
             }
-
             if (debut > fin)
             {
                 return false;
             }
             int milieu = (debut + fin) / 2;
-
             int compare1 = mot.CompareTo(mots[milieu]);  //Fonction compare pour comparer les mots.
-
             if (compare1 == 0)
             {
                 return true;
@@ -139,11 +134,7 @@ namespace Projet_Algo_Poo
             {
                 return rechercheDichotomiqueRecursif(mots, mot, milieu + 1, fin);
             }
-
             return false;
         }
     }
 }
-
-
-
