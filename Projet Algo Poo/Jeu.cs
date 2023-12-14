@@ -151,7 +151,6 @@ namespace Projet_Algo_Poo
             Console.Clear();
             Console.WriteLine(grille.ToString());
             bool stop = false;
-
             DateTime date3 = DateTime.Now; // Début du timer pour la partie
             while (DateTime.Now - date3 < TempsPartie && stop == false)
             {
