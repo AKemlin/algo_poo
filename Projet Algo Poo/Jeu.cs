@@ -143,12 +143,17 @@ namespace Projet_Algo_Poo
                         Console.WriteLine();
                         break;
                     }
-                    bool presence;
+                    bool presence = true;
                     bool dicto = dico.RechDichoRecursif(mot1);
                     if (dicto == false)
                     {
                         Console.WriteLine("Le mot entré n'est pas dans le dictionnaire ! ");
-                        break;
+                        Console.WriteLine();
+                        presence = false;
+                    }
+                    if (presence == false)
+                    {
+
                     }
                     else
                     {
@@ -222,14 +227,18 @@ namespace Projet_Algo_Poo
                         Console.WriteLine();
                         break;
                     }
-                    bool presence;
+                    bool presence = true;
                     bool dicto = dico.RechDichoRecursif(mot2);
                     if (dicto == false)
                     {
                         Console.WriteLine("Le mot entré n'est pas dans le dictionnaire ! ");
                         Console.WriteLine();
-                        break;
-                    } 
+                        presence = false;
+                    }
+                    if (presence == false)
+                    {
+
+                    }
                     else
                     {
                         Console.WriteLine("Le mot entré est dans le dictionnaire");
@@ -280,8 +289,6 @@ namespace Projet_Algo_Poo
                             Console.WriteLine();
                         }
                     }
-                    
-                    
                 }
                 
                 Console.WriteLine("Fin du tour de "+joueur2.AppelationP);
