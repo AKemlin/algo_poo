@@ -96,7 +96,7 @@ namespace Projet_Algo_Poo
         }
         // Recherche dichotomique
         
-        /*public bool RechDichoRecursif(string mot, int fin, int début)
+        public bool RechDichoRecursif(string mot)
         {
             
             if (mot == null || mot.Length == 0)
