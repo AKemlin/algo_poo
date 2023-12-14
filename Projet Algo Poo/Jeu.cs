@@ -124,7 +124,9 @@ namespace Projet_Algo_Poo
                 grille.ToRead(chemin);
                 Console.WriteLine(grille.ToString());
             }
-
+            Console.ReadKey();
+            Console.Clear();
+            Console.WriteLine(grille.ToString());
             DateTime date3 = DateTime.Now;  // debut timer
             while (DateTime.Now - date3 < TempsPartie)
             {
@@ -298,6 +300,8 @@ namespace Projet_Algo_Poo
                 Console.WriteLine(grille.ToString());
 
             }
+            Console.ReadKey();
+            Console.Clear();
             Console.WriteLine();
             Console.WriteLine("Fin de la partie!");
             Console.WriteLine();
