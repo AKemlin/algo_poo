@@ -10,10 +10,12 @@ namespace Projet_Algo_Poo
     class Dictionnaire
     {
         public string[][] lignes = new string[26][];
+
         public Dictionnaire(string[][] lignes)
         {
             this.lignes = lignes;
         }
+
         public void LectureDico()
         {
             string CheminFichier = "..//..//..//Mots_Français.txt";
