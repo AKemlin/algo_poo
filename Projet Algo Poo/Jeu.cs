@@ -236,14 +236,12 @@ namespace Projet_Algo_Poo
                         }
                         break;
                     }
-
                     else if (presence == false)
                     {
                         Console.WriteLine("Le mot n'est pas dans le plateau");
                     }
                 }
                 Console.WriteLine("Fin du tour de "+joueur2.AppelationP);
-                
             }
             Console.WriteLine();
             Console.WriteLine("Fin de la partie!");
