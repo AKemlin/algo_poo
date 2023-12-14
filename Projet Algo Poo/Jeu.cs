@@ -150,17 +150,24 @@ namespace Projet_Algo_Poo
             Console.ReadKey();
             Console.Clear();
             Console.WriteLine(grille.ToString());
+            bool stop = false;
             DateTime date3 = DateTime.Now; // Début du timer pour la partie
-            while (DateTime.Now - date3 < TempsPartie)
+            while (DateTime.Now - date3 < TempsPartie && stop == false)
             {
                 DateTime date1 = DateTime.Now; // Début du timer pour le tour
-                while (DateTime.Now - date1 < tempspartour)
+                while (DateTime.Now - date1 < tempspartour && stop ==  false)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write(joueur1.AppelationP);
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(" A toi de jouer : ");
                     string mot1 = Console.ReadLine();
+                    
+                    if (mot1 == "+")
+                    {
+                        stop = true;
+                        break;
+                    }
                     if (DateTime.Now - date1 > tempspartour)
                     {
                         Console.WriteLine("Temps du tour écoulé !");
@@ -213,6 +220,10 @@ namespace Projet_Algo_Poo
                         }
                     }
                 }
+                if (stop == true)
+                {
+                    break;
+                }
                 Console.Write("Fin du tour de ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(joueur1.AppelationP);
@@ -221,13 +232,18 @@ namespace Projet_Algo_Poo
                 grille.Maj_Plateau();
                 Console.WriteLine(grille.ToString());
                 DateTime date2 = DateTime.Now; // Début du timer pour le tour du joueur 2
-                while (DateTime.Now - date2 < tempspartour) // Boucle pour le tour du joueur 2
+                while (DateTime.Now - date2 < tempspartour && stop == false) // Boucle pour le tour du joueur 2
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write(joueur2.AppelationP); // Affiche le nom du joueur 2
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(" A toi de jouer : ");
                     string mot2 = Console.ReadLine(); // Lecture du mot entré par le joueur 2
+                    if (mot2 == "+")
+                    {
+                        stop = true;
+                        break;
+                    }
                     if (DateTime.Now - date2 > tempspartour) // Vérifie si le temps imparti est écoulé
                     {
                         Console.WriteLine("Temps du tour écoulé !");
@@ -279,6 +295,10 @@ namespace Projet_Algo_Poo
                             Console.WriteLine("Le mot n'est pas dans le plateau");
                         }
                     }
+                }
+                if (stop == true)
+                {
+                    break;
                 }
                 // Affichage de la fin du tour du joueur 2
                 Console.Write("Fin du tour de ");
