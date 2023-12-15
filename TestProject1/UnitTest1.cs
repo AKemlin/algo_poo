@@ -35,9 +35,9 @@ namespace TestProject1
         [Test]
         public void TestMethodeContient()
         {
-            Joueurs j = new Joueurs("Momo");
-            j.Add_Mot("test");
-            Assert.IsTrue(j.Contient("test"));
+            Joueurs j3 = new Joueurs("Momo");
+            j3.Add_Mot("test");
+            Assert.IsTrue(j3.Contient("test"));
         }
 
     }
